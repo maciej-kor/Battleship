@@ -8,6 +8,9 @@ public interface GameBoardController {
 
     void shot(int x, int y);
 
+    int getShipwreckNumber();
+
+
 
 
 }

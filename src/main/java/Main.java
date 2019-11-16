@@ -1,10 +1,19 @@
-import Model.GameBoardControlerImpl;
+import Model.Game;
+import Model.GameBoard;
+import Model.GameControler;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        Model.GameBoardController gameBoardController = new GameBoardControlerImpl();
-        gameBoardController.randomShipsCoordinates(7);
+        GameControler gameControler = new Game();
+        gameControler.addPlayer("player1");
+        gameControler.getGameBoard();
+
+        List<GameBoard> gameBoards = gameControler.getGameBoard();
+
+        gameControler.checkIfWin(gameBoards.get(0));
 
     }
 }

@@ -7,8 +7,8 @@ import java.util.Random;
 public class GameBoardControlerImpl implements GameBoardController {
 
 
-    public static List<Ship> shipList = new ArrayList<>();
-    public static List<Field> gameBoards = new ArrayList<>();
+    public List<Ship> shipList = new ArrayList<>();
+    public List<Field> gameBoards = new ArrayList<>();
 
     @Override
     public void addGameBoard(int gameBoardSize) {
@@ -71,10 +71,19 @@ public class GameBoardControlerImpl implements GameBoardController {
                 }
             }
         }
-
-
     }
 
+    @Override
+    public int getShipwreckNumber() {
+        int shipWreckNumber = 0;
+
+        for (Ship ship : shipList) {
+            if (ship.isSunken())
+                shipWreckNumber++;
+        }
+
+        return shipWreckNumber;
+    }
 
     public void randomShipCoordinates(int shipsNumber, int shipsLenght, int gameBoardSize) {
 
