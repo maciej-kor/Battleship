@@ -11,9 +11,7 @@ public class GuiController {
     static GameControler game = new Game();
     static StartingPanel startingPanel;
     static MainFrame mainFrame;
-    FieldButton fieldButton = new FieldButton();
-    static MainPanel mainPanel = new MainPanel();
-    static int x, y = 0;
+    static MainPanel mainPanel = new MainPanel(game);
 
     public GuiController() {
         addFrame();
@@ -45,7 +43,9 @@ public class GuiController {
             game.addPlayer(name2);
             mainFrame.setVisible(false);
             MainFrame mainFrame = new MainFrame();
-            mainPanel = new MainPanel();
+
+            mainPanel = new MainPanel(game);
+
             mainFrame.add(mainPanel);
             mainFrame.pack();
             mainFrame.setWindowInCenter();
@@ -69,32 +69,6 @@ public class GuiController {
 
         game.shot(x, y, player);
 
-    }
-
-    public int loadFieldState(int x, int y, Player player) {
-
-        final int EMPTY_FIELD = 0;
-        final int MISSED_SHOT = -1;
-        final int HIT = 1;
-        final int WRECK = 2;
-
-        List<Field> fields = game.getGameBoard(player).getGameBoardControler().getFields();
-
-        for (Field f : fields) {
-            if (x == f.getX() && y == f.getY()) {
-                f.getFieldState();
-                if (f.getFieldState().equals(FieldState.EMPTY)) {
-                    return EMPTY_FIELD;
-                } else if (f.getFieldState().equals(FieldState.HIT)) {
-                    return HIT;
-                } else if (f.getFieldState().equals(FieldState.MISSED_SHOT)) {
-                    return MISSED_SHOT;
-                } else if (f.getFieldState().equals(FieldState.WRECK)) {
-                    return WRECK;
-                }
-            }
-        }
-        return -2;
     }
 
 }

@@ -11,18 +11,19 @@ public class Game implements GameControler {
     List<Player> players = new ArrayList<>();
     List<GameBoard> gameBoards = new ArrayList<>();
 
+
     @Override
     public void addPlayer(String name) {
 
         boolean nameExists = false;
+        if (players.size() > 0) {
+            for (Player player : players) {
 
-        for (Player player : players) {
-
-            if (player.getName() == name) {
-                nameExists = true;
+                if (player.getName() == name) {
+                    nameExists = true;
+                }
             }
         }
-
         if (!nameExists) {
 
             Player player = new Player();
@@ -42,7 +43,7 @@ public class Game implements GameControler {
     @Override
     public void shot(int x, int y, Player player) {
 
-        getPlayerGameBoardMap().get(player).getGameBoardControler().shot(x,y);
+        getPlayerGameBoardMap().get(player).getGameBoardControler().shot(x, y);
 
     }
 
@@ -63,6 +64,11 @@ public class Game implements GameControler {
         return gameBoards;
     }
 
+    @Override
+    public List<Player> getPlayers() {
+        return players;
+    }
+
     public Map<Player, GameBoard> getPlayerGameBoardMap() {
         return playerGameBoardMap;
     }
@@ -70,4 +76,6 @@ public class Game implements GameControler {
     public void setPlayerGameBoardMap(Map<Player, GameBoard> playerGameBoardMap) {
         this.playerGameBoardMap = playerGameBoardMap;
     }
+
+
 }

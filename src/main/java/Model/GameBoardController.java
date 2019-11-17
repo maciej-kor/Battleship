@@ -14,6 +14,8 @@ public interface GameBoardController {
 
     List<Field> getFields();
 
+    int getFieldStatus(int x, int y, Player player);
+
 
 
 }

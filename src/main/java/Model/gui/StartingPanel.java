@@ -71,25 +71,6 @@ public class StartingPanel extends JPanel implements MouseListener {
             setPlayer2NameString(player2Name.getText());
             GuiController.nextButtonAction(getPlayer1NameString(), getPlayer2NameString());
         });
-
-//        nextButtonAction.addActionListener(new ActionListener() {
-//
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if((player1Name.getText().equals("") || player2Name.getText().equals("")) || (player1Name == null || player2Name == null)){
-//                    JOptionPane.showMessageDialog(nextButtonAction, "I said input your name soldier! Listen to your commander or leave this ship!");
-//                }else{
-//
-////                    Game game = new Game();
-////                    game.addPlayer(player1Name.getText());
-////                    game.addPlayer(player2Name.getText());
-////                    MainFrame.mainPanel = new MainPanel();
-////                    MainFrame.startingPanel.setVisible(false);
-////                    MainFrame.mainPanel.setVisible(true);
-//                }
-//            }
-//        });
-
     }
 
     public void createJTextFields() {
