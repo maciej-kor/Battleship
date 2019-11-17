@@ -27,6 +27,7 @@ public class Game implements GameControler {
 
             Player player = new Player();
             player.setName(name);
+            Player.setWins(0);
             players.add(player);
             GameBoard gameBoard = new GameBoard(10);
             gameBoard.setPlayer(player);

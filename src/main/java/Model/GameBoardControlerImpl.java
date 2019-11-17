@@ -101,7 +101,7 @@ public class GameBoardControlerImpl implements GameBoardController {
                 ship = addShip(randomCoordinates, shipsLenght, gameBoardSize);
 
                 if (ship != null) {
-                    shipList.add(addShip(randomCoordinates, shipsLenght, gameBoardSize));
+                    shipList.add(ship);
                     j++;
                 }
 
