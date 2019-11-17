@@ -10,12 +10,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-//        GameControler gameControler = new Game();
-//        gameControler.addPlayer("player1");
-//        gameControler.getGameBoards();
-//
-//        List<GameBoard> fields = gameControler.getGameBoards();
-//
+        EventQueue.invokeLater(()-> new MainFrame());
 
     }
 }

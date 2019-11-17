@@ -13,6 +13,13 @@ public class MainFrame extends JFrame {
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
+        this.setResizable(false);
+        startingPanel = new StartingPanel();
+        startingPanel.setVisible(true);
+        this.add(startingPanel);
+        //mainPanel = new MainPanel();
+        //mainPanel.setVisible(false);
+        //this.add(mainPanel);
         this.pack();
         setWindowInCenter();
 
