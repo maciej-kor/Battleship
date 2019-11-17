@@ -29,7 +29,10 @@ public class BoardPanel extends JPanel {
         for (int i = 0; i < gameBoardSize; i++) {
             for (int j = 0; j < gameBoardSize; j++) {
 
-                jButtons[i][j] = new FieldButton();
+                FieldButton fieldButton = new FieldButton();
+                fieldButton.setX(i);
+                fieldButton.setY(j);
+                jButtons[i][j] = fieldButton;
                 this.add(jButtons[i][j]);
 
             }

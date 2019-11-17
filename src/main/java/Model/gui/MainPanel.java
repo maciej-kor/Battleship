@@ -28,6 +28,7 @@ public class MainPanel extends JPanel {
     }
 
 
+
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(1320, 760);

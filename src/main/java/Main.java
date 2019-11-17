@@ -1,6 +1,7 @@
 import Model.Game;
 import Model.GameBoard;
 import Model.GameControler;
+import Model.gui.Gui;
 import Model.gui.MainFrame;
 import Model.gui.StartingFrame;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        EventQueue.invokeLater(()-> new MainFrame());
+        EventQueue.invokeLater(()-> new Gui());
 
     }
 }
