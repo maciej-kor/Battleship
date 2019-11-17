@@ -15,4 +15,5 @@ public interface GameControler {
 
     List<GameBoard> getGameBoards();
 
+    List<Player> getPlayers();
 }

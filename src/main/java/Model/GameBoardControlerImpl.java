@@ -20,8 +20,8 @@ public class GameBoardControlerImpl implements GameBoardController {
 
                 Field field = new Field();
 
-                field.setX(j);
-                field.setY(i);
+                field.setXx(j);
+                field.setYy(i);
                 field.setFieldState(FieldState.EMPTY);
 
                 fields.add(field);
@@ -36,7 +36,7 @@ public class GameBoardControlerImpl implements GameBoardController {
 
         shipList = new ArrayList<>();
 
-        randomShipCoordinates(1, 1, gameBoardSize);
+        randomShipCoordinates(4, 1, gameBoardSize);
         randomShipCoordinates(2, 2, gameBoardSize);
         randomShipCoordinates(1, 3, gameBoardSize);
         randomShipCoordinates(1, 4, gameBoardSize);
@@ -47,6 +47,9 @@ public class GameBoardControlerImpl implements GameBoardController {
     @Override
     public void shot(int x, int y) {
 
+        boolean hit = false;
+        boolean sunk = false;
+
         for (Ship ship : shipList) {
             for (int i = 0; i < ship.getLength(); i++) {
 
@@ -54,28 +57,51 @@ public class GameBoardControlerImpl implements GameBoardController {
 
                     ship.setHitsNumber(ship.getHitsNumber() + 1);
 
-                    if (ship.getHitsNumber() == ship.getLength())
+                    if (ship.getHitsNumber() == ship.getLength()) {
                         ship.setSunken(true);
-
-                    for (Field field : fields) {
-
-                        if (field.getX() == x && field.getY() == y)
-                            field.setFieldState(FieldState.HIT);
-
+                        sunk = true;
                     }
 
-                } else {
-
                     for (Field field : fields) {
 
-                        if (field.getX() == x && field.getY() == y)
-                            field.setFieldState(FieldState.MISSED_SHOT);
+                        if (field.getXx() == x && field.getYy() == y) {
 
+                            field.setFieldState(FieldState.HIT);
+                            hit = true;
+
+                        }
                     }
                 }
             }
+
+            if (sunk) {
+                for (int i = 0; i < ship.getLength(); i++) {
+                    for (Field field : fields) {
+                        if (field.getXx() == ship.getCoordinates()[i][0] && field.getYy() == ship.getCoordinates()[i][1] && field.getFieldState().equals(FieldState.HIT)) {
+                            field.setFieldState(FieldState.WRECK);
+                            System.out.println(field.getYy());
+                            System.out.println(field.getXx());
+                        }
+                    }
+                }
+
+            }
+
+            if (!hit) {
+
+                for (Field field : fields) {
+
+                    if (field.getXx() == x && field.getYy() == y) {
+                        field.setFieldState(FieldState.MISSED_SHOT);
+                        System.out.println("x" + field.getXx() + "y: " + field.getYy());
+                    }
+
+                }
+            }
         }
+
     }
+
 
     @Override
     public int getShipwreckNumber() {
@@ -123,6 +149,33 @@ public class GameBoardControlerImpl implements GameBoardController {
         }
 
     }
+
+    public int getFieldStatus(int x, int y, Player player) {
+
+        final int EMPTY_FIELD = 0;
+        final int MISSED_SHOT = -1;
+        final int HIT = 1;
+        final int WRECK = 2;
+
+        List<Field> fields = getFields();
+
+        for (Field f : fields) {
+            if (x == f.getXx() && y == f.getYy()) {
+
+                if (f.getFieldState().equals(FieldState.EMPTY)) {
+                    return EMPTY_FIELD;
+                } else if (f.getFieldState().equals(FieldState.HIT)) {
+                    return HIT;
+                } else if (f.getFieldState().equals(FieldState.MISSED_SHOT)) {
+                    return MISSED_SHOT;
+                } else if (f.getFieldState().equals(FieldState.WRECK)) {
+                    return WRECK;
+                }
+            }
+        }
+        return -2;
+    }
+
 
     private int[][] randomCoordinate(int shipLenght, int gameBoardSize) {
 
