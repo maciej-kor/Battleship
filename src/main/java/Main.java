@@ -2,6 +2,7 @@ import Model.Game;
 import Model.GameBoard;
 import Model.GameControler;
 import Model.gui.MainFrame;
+import Model.gui.StartingFrame;
 
 import java.awt.*;
 import java.util.List;
@@ -15,10 +16,6 @@ public class Main {
 //
 //        List<GameBoard> fields = gameControler.getGameBoards();
 //
-//        gameControler.checkIfWin(fields.get(0));
-        EventQueue.invokeLater(() -> new MainFrame());
-           // MainFrame mainFrame = new MainFrame();
-
 
     }
 }

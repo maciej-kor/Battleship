@@ -3,22 +3,19 @@ package Model.gui;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainFrame extends JFrame {
+public class StartingFrame extends JFrame {
 
-    public static StartingPanel startingPanel;
-    public static MainPanel mainPanel;
-
-
-    public MainFrame() {
-
+    public StartingFrame(){
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
+        StartingPanel startingPanel = new StartingPanel();
+        this.add(startingPanel);
         this.pack();
         setWindowInCenter();
 
-        String filePath = "theme.wav";
-        MusicClass musicObject = new MusicClass();
-        musicObject.playMusic(filePath);
+
+        //String filePath = "/src/main/resources/Model/sounds/theme.mp3";
+
     }
 
     private void setWindowInCenter() {
@@ -28,5 +25,6 @@ public class MainFrame extends JFrame {
 
         this.setLocation((screenSize.width / 2 - frameDimension.width / 2), (screenSize.height / 2 - frameDimension.height / 2));
     }
+
 
 }
