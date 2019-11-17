@@ -31,10 +31,3 @@ public class Field {
     }
 }
 
-enum FieldState {
-
-    HIT,
-    MISSED_SHOT,
-    EMPTY
-
-}

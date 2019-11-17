@@ -39,24 +39,34 @@ public class Game implements GameControler {
     }
 
     @Override
-    public void shot(int x, int y, GameBoard gameBoard) {
+    public void shot(int x, int y, Player player) {
 
-        gameBoard.getGameBoardControler().shot(x, y);
+        getPlayerGameBoardMap().get(player).getGameBoardControler().shot(x,y);
 
     }
 
     @Override
-    public boolean checkIfWin(GameBoard gameBoard) {
-        if (gameBoard.getGameBoardControler().getShipwreckNumber() == 10)
+    public boolean checkIfWin(Player player) {
+        if (getPlayerGameBoardMap().get(player).getGameBoardControler().getShipwreckNumber() == 10)
             return true;
         else
             return false;
     }
 
     @Override
-    public List<GameBoard> getGameBoard() {
+    public GameBoard getGameBoard(Player player) {
+        return getPlayerGameBoardMap().get(player);
+    }
+
+    public List<GameBoard> getGameBoards() {
         return gameBoards;
     }
 
+    public Map<Player, GameBoard> getPlayerGameBoardMap() {
+        return playerGameBoardMap;
+    }
 
+    public void setPlayerGameBoardMap(Map<Player, GameBoard> playerGameBoardMap) {
+        this.playerGameBoardMap = playerGameBoardMap;
+    }
 }

@@ -7,7 +7,11 @@ public class GameBoard {
     private int gameBoardSize;
 
     public GameBoard(int gameBoardSize){
-        gameBoardControler.addGameBoard(gameBoardSize);
+        gameBoardControler.addFields(gameBoardSize);
+        gameBoardControler.randomShipsCoordinates(gameBoardSize);
+    }
+
+    public void randomShipCoordinates(){
         gameBoardControler.randomShipsCoordinates(gameBoardSize);
     }
 

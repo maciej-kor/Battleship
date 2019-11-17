@@ -11,11 +11,11 @@ public class Main {
 
 //        GameControler gameControler = new Game();
 //        gameControler.addPlayer("player1");
-//        gameControler.getGameBoard();
+//        gameControler.getGameBoards();
 //
-//        List<GameBoard> gameBoards = gameControler.getGameBoard();
+//        List<GameBoard> fields = gameControler.getGameBoards();
 //
-//        gameControler.checkIfWin(gameBoards.get(0));
+//        gameControler.checkIfWin(fields.get(0));
         EventQueue.invokeLater(() -> new MainFrame());
            // MainFrame mainFrame = new MainFrame();
 

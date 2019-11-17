@@ -1,8 +1,10 @@
 package Model;
 
+import java.util.List;
+
 public interface GameBoardController {
 
-    void addGameBoard(int gameBoardSize);
+    void addFields(int gameBoardSize);
 
     void randomShipsCoordinates(int gameBoardSize);
 
@@ -10,6 +12,7 @@ public interface GameBoardController {
 
     int getShipwreckNumber();
 
+    List<Field> getFields();
 
 
 

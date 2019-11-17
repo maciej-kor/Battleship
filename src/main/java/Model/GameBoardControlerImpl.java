@@ -7,11 +7,13 @@ import java.util.Random;
 public class GameBoardControlerImpl implements GameBoardController {
 
 
-    public List<Ship> shipList = new ArrayList<>();
-    public List<Field> gameBoards = new ArrayList<>();
+    public List<Ship> shipList;
+    public List<Field> fields;
 
     @Override
-    public void addGameBoard(int gameBoardSize) {
+    public void addFields(int gameBoardSize) {
+
+        fields = new ArrayList<>();
 
         for (int i = 0; i < gameBoardSize; i++) {
             for (int j = 0; j < gameBoardSize; j++) {
@@ -22,7 +24,7 @@ public class GameBoardControlerImpl implements GameBoardController {
                 field.setY(i);
                 field.setFieldState(FieldState.EMPTY);
 
-                gameBoards.add(field);
+                fields.add(field);
 
             }
         }
@@ -31,6 +33,8 @@ public class GameBoardControlerImpl implements GameBoardController {
 
     @Override
     public void randomShipsCoordinates(int gameBoardSize) {
+
+        shipList = new ArrayList<>();
 
         randomShipCoordinates(1, 1, gameBoardSize);
         randomShipCoordinates(2, 2, gameBoardSize);
@@ -53,7 +57,7 @@ public class GameBoardControlerImpl implements GameBoardController {
                     if (ship.getHitsNumber() == ship.getLength())
                         ship.setSunken(true);
 
-                    for (Field field : gameBoards) {
+                    for (Field field : fields) {
 
                         if (field.getX() == x && field.getY() == y)
                             field.setFieldState(FieldState.HIT);
@@ -62,7 +66,7 @@ public class GameBoardControlerImpl implements GameBoardController {
 
                 } else {
 
-                    for (Field field : gameBoards) {
+                    for (Field field : fields) {
 
                         if (field.getX() == x && field.getY() == y)
                             field.setFieldState(FieldState.MISSED_SHOT);
@@ -85,7 +89,16 @@ public class GameBoardControlerImpl implements GameBoardController {
         return shipWreckNumber;
     }
 
-    public void randomShipCoordinates(int shipsNumber, int shipsLenght, int gameBoardSize) {
+    public List<Ship> getShipList() {
+        return shipList;
+    }
+
+    @Override
+    public List<Field> getFields() {
+        return fields;
+    }
+
+    private void randomShipCoordinates(int shipsNumber, int shipsLenght, int gameBoardSize) {
 
         for (int i = 0; i < shipsNumber; i++) {
 
@@ -101,13 +114,11 @@ public class GameBoardControlerImpl implements GameBoardController {
                 ship = addShip(randomCoordinates, shipsLenght, gameBoardSize);
 
                 if (ship != null) {
-                    shipList.add(addShip(randomCoordinates, shipsLenght, gameBoardSize));
+                    shipList.add(ship);
                     j++;
                 }
 
             }
-
-            System.out.println(shipList);
 
         }
 

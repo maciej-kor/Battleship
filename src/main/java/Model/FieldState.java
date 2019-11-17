@@ -1,4 +1,10 @@
 package Model;
 
-public class FieldState {
+public enum FieldState {
+
+    HIT,
+    MISSED_SHOT,
+    EMPTY,
+    WRECK
+
 }

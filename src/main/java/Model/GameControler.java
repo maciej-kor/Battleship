@@ -1,15 +1,18 @@
 package Model;
 
 import java.util.List;
+import java.util.Map;
 
 public interface GameControler {
 
     void addPlayer(String name);
 
-    void shot(int x, int y, GameBoard gameBoard);
+    void shot(int x, int y, Player player);
 
-    boolean checkIfWin(GameBoard gameBoard);
+    boolean checkIfWin(Player player);
 
-    List<GameBoard> getGameBoard();
+    GameBoard getGameBoard(Player player);
+
+    List<GameBoard> getGameBoards();
 
 }

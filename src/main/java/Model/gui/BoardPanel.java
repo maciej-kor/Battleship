@@ -9,6 +9,9 @@ public class BoardPanel extends JPanel {
 
     public static ImageIcon imageIconWater;
     public static ImageIcon imageIconEntered;
+    public static ImageIcon imageIconMissedShot;
+    public static ImageIcon imageIconHit;
+    public static ImageIcon imageIconHit11;
 
     public BoardPanel() {
 
@@ -32,7 +35,6 @@ public class BoardPanel extends JPanel {
             }
         }
 
-
     }
 
     public void addIcons() {
@@ -44,6 +46,18 @@ public class BoardPanel extends JPanel {
         ImageIcon imageIconEntered1 = new ImageIcon(getClass().getResource("water2.png"));
         Image imageEntered = imageIconEntered1.getImage();
         imageIconEntered = new ImageIcon(imageEntered.getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+
+        ImageIcon imageIconMissedShot1 = new ImageIcon(getClass().getResource("missShot.png"));
+        Image imageMissedShot = imageIconMissedShot1.getImage();
+        imageIconMissedShot = new ImageIcon(imageMissedShot.getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+
+        ImageIcon imageIconHit1 = new ImageIcon(getClass().getResource("hit.png"));
+        Image imageHit = imageIconHit1.getImage();
+        imageIconHit = new ImageIcon(imageHit.getScaledInstance(60, 60, Image.SCALE_DEFAULT));
+
+        ImageIcon imageIconHit12 = new ImageIcon(getClass().getResource("missedShot.png"));
+        Image imageHit1 = imageIconHit12.getImage();
+        imageIconHit11 = new ImageIcon(imageHit1.getScaledInstance(60, 60, Image.SCALE_DEFAULT));
 
     }
 
