@@ -1,35 +1,28 @@
 package Model.gui;
 
-import Model.Field;
-import Model.GameControler;
 import Model.Player;
+import Model.controller.Controller;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class FieldButton extends JButton implements MouseListener {
 
-    int x;
-    int y;
-    GameControler game;
+    int x, y;
+    Controller controller;
     Player player;
     int status;
-    ImageIcon imageIcon;
 
-    FieldButton(GameControler game, Player player) {
+    FieldButton(Controller controller, Player player) {
 
-        this.game = game;
+        this.controller = controller;
         this.player = player;
-
         this.setContentAreaFilled(false);
         this.setIcon(BoardPanel.imageIconWater);
         this.setBorder(null);
 
         addMouseListener(this);
-
-
     }
 
     public int getxX() {
@@ -61,39 +54,17 @@ public class FieldButton extends JButton implements MouseListener {
     }
 
     public void setStatus(int status) {
-        if (status == 2)
-            this.setIcon(BoardPanel.imageIconWreck);
         this.status = status;
     }
 
-    public ImageIcon getImageIcon() {
-        return imageIcon;
-    }
-
-    public void setImageIcon(ImageIcon imageIcon) {
-        this.imageIcon = imageIcon;
-    }
     @Override
     public void mouseClicked(MouseEvent e) {
 
         System.out.println(player.getName());
-        if (status == 0) {
 
-            game.shot(x, y, player);
-            int status = game.getGameBoard(player).getGameBoardControler().getFieldStatus(getxX(), getyY(), player);
-            System.out.println(status);
+        if (status == 0)
+            controller.shoot(player, getxX(), getyY());
 
-            if (status == -1) {
-                this.status = status;
-                this.setIcon(BoardPanel.imageIconMissedShot);
-            } else if (status == 1) {
-                this.status = status;
-                this.setIcon(BoardPanel.imageIconHit);
-            } else if (status == 2) {
-                this.status = status;
-                this.setIcon(BoardPanel.imageIconWreck);
-            }
-        }
     }
 
 

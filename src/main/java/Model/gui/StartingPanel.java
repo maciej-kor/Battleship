@@ -1,22 +1,19 @@
 package Model.gui;
 
+import Model.controller.Controller;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-public class StartingPanel extends JPanel implements MouseListener {
+public class StartingPanel extends JPanel {
 
     private JTextField player1Name, player2Name;
     private NextButton nextButton = new NextButton();
     private JLabel player1, player2, inputNames;
-    boolean next = false;
-    private String player1NameString;
-    private String player2NameString;
+    Controller controller;
 
-    public StartingPanel() {
+    public StartingPanel(Controller controller) {
         setLayout(null);
-        addMouseListener(this);
+        this.controller = controller;
 
         //setting background
         ImageIcon img = new ImageIcon("Background.jpg");
@@ -67,9 +64,7 @@ public class StartingPanel extends JPanel implements MouseListener {
         nextButton.setBounds(850, 150, 90, 90);
         nextButton.setIcon(NextButton.nextButtonImg);
         nextButton.addActionListener(e -> {
-            setPlayer1NameString(player1Name.getText());
-            setPlayer2NameString(player2Name.getText());
-            GuiController.nextButtonAction(getPlayer1NameString(), getPlayer2NameString());
+            addUsers();
         });
     }
 
@@ -86,46 +81,14 @@ public class StartingPanel extends JPanel implements MouseListener {
         return new Dimension(1280, 720);
     }
 
+    public void addUsers() {
 
-    public String getPlayer1NameString() {
-        return player1NameString;
+        if (player1Name.getText().equals("") || player2Name.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "I said input your name soldier! Listen to your commander or leave this ship!");
+        } else {
+            controller.addUser(player1Name.getText());
+            controller.addUser(player2Name.getText());
+        }
     }
 
-    public String getPlayer2NameString() {
-        return player2NameString;
-    }
-
-    public void setPlayer1NameString(String s) {
-        player1NameString = s;
-    }
-
-    public void setPlayer2NameString(String s) {
-        player2NameString = s;
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        player1NameString = player1Name.getText();
-        System.out.println(player1NameString);
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
 }

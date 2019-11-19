@@ -1,9 +1,7 @@
 package Model.gui;
 
-import Model.Field;
-import Model.Game;
-import Model.GameControler;
 import Model.Player;
+import Model.controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +9,7 @@ import java.awt.*;
 public class BoardPanel extends JPanel {
 
     FieldButton[][] jButtons;
-    GameControler game;
+    Controller controller;
     Player player;
 
     public static ImageIcon imageIconWater;
@@ -21,14 +19,15 @@ public class BoardPanel extends JPanel {
     public static ImageIcon imageIconWreck;
 
 
-    public BoardPanel(GameControler game, Player player) {
+    public BoardPanel(Controller controller, Player player) {
 
+        this.controller = controller;
         this.player = player;
         GridLayout gridLayout = new GridLayout(10, 10);
-        this.game = game;
         this.setLayout(gridLayout);
         addIcons();
         createJButtons(10);
+
     }
 
     public void createJButtons(int gameBoardSize) {
@@ -38,11 +37,30 @@ public class BoardPanel extends JPanel {
         for (int i = 0; i < gameBoardSize; i++) {
             for (int j = 0; j < gameBoardSize; j++) {
 
-                FieldButton fieldButton = new FieldButton(game, player);
+                FieldButton fieldButton = new FieldButton(controller, player);
                 fieldButton.setxX(i);
                 fieldButton.setyY(j);
+                fieldButton.setIcon(imageIconWater);
                 jButtons[i][j] = fieldButton;
                 this.add(jButtons[i][j]);
+
+            }
+        }
+    }
+
+    public void rysujIkony(int gameBoardSize) {
+
+        for (int i = 0; i < gameBoardSize; i++) {
+            for (int j = 0; j < gameBoardSize; j++) {
+
+                if (jButtons[i][j].getStatus() == -1) {
+                    jButtons[i][j].setIcon(imageIconMissedShot);
+                    this.add(jButtons[i][j]);
+                } else if (jButtons[i][j].getStatus() == 1) {
+                    jButtons[i][j].setIcon(imageIconHit);
+                } else if (jButtons[i][j].getStatus() == 2) {
+                    jButtons[i][j].setIcon(imageIconWreck);
+                }
 
             }
         }
@@ -79,6 +97,14 @@ public class BoardPanel extends JPanel {
 
     public void setjButtons(FieldButton[][] jButtons) {
         //BoardPanel.jButtons = jButtons;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     @Override

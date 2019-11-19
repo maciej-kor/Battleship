@@ -1,17 +1,11 @@
-import Model.Game;
-import Model.GameBoard;
-import Model.GameControler;
-import Model.gui.Gui;
-import Model.gui.MainFrame;
-import Model.gui.StartingFrame;
+import Model.controller.Controller;
 
 import java.awt.*;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        EventQueue.invokeLater(()-> new Gui());
+        EventQueue.invokeLater(()-> new Controller());
 
     }
 }
