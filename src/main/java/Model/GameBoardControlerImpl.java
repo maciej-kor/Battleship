@@ -37,8 +37,8 @@ public class GameBoardControlerImpl implements GameBoardController {
         shipList = new ArrayList<>();
 
         randomShipCoordinates(4, 1, gameBoardSize);
-        randomShipCoordinates(2, 2, gameBoardSize);
-        randomShipCoordinates(1, 3, gameBoardSize);
+        randomShipCoordinates(3, 2, gameBoardSize);
+        randomShipCoordinates(2, 3, gameBoardSize);
         randomShipCoordinates(1, 4, gameBoardSize);
 
         System.out.println(shipList);
@@ -79,8 +79,8 @@ public class GameBoardControlerImpl implements GameBoardController {
                     for (Field field : fields) {
                         if (field.getXx() == ship.getCoordinates()[i][0] && field.getYy() == ship.getCoordinates()[i][1] && field.getFieldState().equals(FieldState.HIT)) {
                             field.setFieldState(FieldState.WRECK);
-                            System.out.println(field.getYy());
-                            System.out.println(field.getXx());
+                            //System.out.println(field.getYy());
+                           // System.out.println(field.getXx());
                         }
                     }
                 }
@@ -93,7 +93,7 @@ public class GameBoardControlerImpl implements GameBoardController {
 
                     if (field.getXx() == x && field.getYy() == y) {
                         field.setFieldState(FieldState.MISSED_SHOT);
-                        System.out.println("x" + field.getXx() + "y: " + field.getYy());
+                        //System.out.println("x" + field.getXx() + "y: " + field.getYy());
                     }
 
                 }

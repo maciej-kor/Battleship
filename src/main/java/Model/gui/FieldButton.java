@@ -73,7 +73,6 @@ public class FieldButton extends JButton implements MouseListener {
     public void setImageIcon(ImageIcon imageIcon) {
         this.imageIcon = imageIcon;
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -81,7 +80,6 @@ public class FieldButton extends JButton implements MouseListener {
         if (status == 0) {
 
             game.shot(x, y, player);
-//            BoardPanel.updateFieldState(player);
             int status = game.getGameBoard(player).getGameBoardControler().getFieldStatus(getxX(), getyY(), player);
             System.out.println(status);
 

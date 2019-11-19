@@ -1,5 +1,7 @@
 package Model.gui;
 
+import java.awt.event.MouseListener;
+
 public class Gui {
 
     GuiController guiController = new GuiController();

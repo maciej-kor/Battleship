@@ -64,11 +64,4 @@ public class GuiController {
         }
     }
 
-
-    public static void shoot(int x, int y, Player player) {
-
-        game.shot(x, y, player);
-
-    }
-
 }

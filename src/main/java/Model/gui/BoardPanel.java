@@ -1,5 +1,7 @@
 package Model.gui;
 
+import Model.Field;
+import Model.Game;
 import Model.GameControler;
 import Model.Player;
 
@@ -8,8 +10,8 @@ import java.awt.*;
 
 public class BoardPanel extends JPanel {
 
-    static FieldButton[][] jButtons;
-    static GameControler game;
+    FieldButton[][] jButtons;
+    GameControler game;
     Player player;
 
     public static ImageIcon imageIconWater;
@@ -18,17 +20,6 @@ public class BoardPanel extends JPanel {
     public static ImageIcon imageIconHit;
     public static ImageIcon imageIconWreck;
 
-//    public static void updateFieldState(Player player){
-//
-//        for (int i = 0; i < 10; i++) {
-//            for (int j = 0; j < 10; j++) {
-//
-//                jButtons[i][j].setStatus(game.getGameBoard(player).getGameBoardControler().getFieldStatus(i, j, player));
-//
-//            }
-//        }
-
-//    }
 
     public BoardPanel(GameControler game, Player player) {
 
@@ -82,12 +73,12 @@ public class BoardPanel extends JPanel {
 
     }
 
-    public static FieldButton[][] getjButtons() {
+    public FieldButton[][] getjButtons() {
         return jButtons;
     }
 
-    public static void setjButtons(FieldButton[][] jButtons) {
-        BoardPanel.jButtons = jButtons;
+    public void setjButtons(FieldButton[][] jButtons) {
+        //BoardPanel.jButtons = jButtons;
     }
 
     @Override
