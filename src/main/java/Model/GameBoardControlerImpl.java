@@ -45,7 +45,7 @@ public class GameBoardControlerImpl implements GameBoardController {
     }
 
     @Override
-    public void shot(int x, int y) {
+    public boolean shot(int x, int y) {
 
         boolean hit = false;
 
@@ -92,6 +92,9 @@ public class GameBoardControlerImpl implements GameBoardController {
 
             }
         }
+
+        return hit;
+
     }
 
 

@@ -44,9 +44,9 @@ public class Game implements GameControler {
     @Override
     public void shot(int x, int y, Player player) {
 
-        getPlayerGameBoardMap().get(player).getGameBoardControler().shot(x, y);
-
-
+        player.setNextMove( getPlayerGameBoardMap().get(player).getGameBoardControler().shot(x, y));
+        System.out.println("Player: " + player.getName() + "Następny ruch: " + player.isNextMove());
+        
     }
 
     @Override

@@ -5,6 +5,7 @@ import Model.gui.FieldButton;
 import Model.gui.Gui;
 
 import java.util.List;
+import java.util.Random;
 
 public class Controller {
 
@@ -26,7 +27,20 @@ public class Controller {
         playerList = gameControler.getPlayers();
 
         if (sprawdzCzyJestDwochUzytkownikow()) {
-            oknoLosowania(playerList.get(0));
+            Random random = new Random();
+            boolean whoStart = random.nextBoolean();
+
+            if (whoStart){
+                gameControler.getPlayers().get(0).setNextMove(true);
+                gameControler.getPlayers().get(1).setNextMove(false);
+                System.out.println("zaczyna: " + gameControler.getPlayers().get(0));
+            } else {
+                gameControler.getPlayers().get(1).setNextMove(true);
+                gameControler.getPlayers().get(0).setNextMove(false);
+                System.out.println("zaczyna: " + gameControler.getPlayers().get(1).getName());
+            }
+
+            gui.createGamePanel();
         }
 
     }

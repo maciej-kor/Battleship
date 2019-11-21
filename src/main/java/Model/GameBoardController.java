@@ -8,7 +8,7 @@ public interface GameBoardController {
 
     void randomShipsCoordinates(int gameBoardSize);
 
-    void shot(int x, int y);
+    boolean shot(int x, int y);
 
     int getShipwreckNumber();
 
