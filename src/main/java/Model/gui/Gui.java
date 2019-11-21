@@ -3,6 +3,8 @@ package Model.gui;
 import Model.Player;
 import Model.controller.Controller;
 
+import javax.swing.*;
+
 public class Gui {
 
     StartingPanel startingPanel;
@@ -37,22 +39,22 @@ public class Gui {
 
     }
 
-    public void createRandomPanel(Player player){
+    public void createRandomPanel(Player player) {
 
         mainFrame.setVisible(false);
-        MainFrame mainFrame = new MainFrame();
+        mainFrame = new MainFrame();
+        mainFrame.setVisible(true);
         randomShipsPanel = new RandomShipsPanel(controller, player);
         mainFrame.add(randomShipsPanel);
         mainFrame.pack();
         mainFrame.setWindowInCenter();
 
-
     }
 
-    public void createGamePanel(){
+    public void createGamePanel() {
 
         mainFrame.setVisible(false);
-        MainFrame mainFrame = new MainFrame();
+        mainFrame = new MainFrame();
         mainPanel = new MainPanel(controller);
         mainFrame.add(mainPanel);
         mainFrame.pack();
@@ -61,6 +63,34 @@ public class Gui {
 
     }
 
+    public void wyswietlPanelZwyciestwa(Player player) {
+
+        mainFrame.setVisible(false);
+        mainFrame = new MainFrame();
+        WinnerPanel winnerPanel = new WinnerPanel(player);
+        winnerPanel.setVisible(true);
+        mainFrame.add(winnerPanel);
+        mainFrame.pack();
+        mainFrame.setWindowInCenter();
+
+    }
+
+//    public void dodajMgielke(Player player) {
+//
+//        mainPanel.getBoardPanelList(player).zakryj();
+//
+//    }
+//
+//    public void usunMgielke(Player player) {
+//
+//        mainPanel.getBoardPanelList(player).odkryj();
+//
+//    }
+
+
+    public MainFrame getMainFrame() {
+        return mainFrame;
+    }
 
     public MainPanel getMainPanel() {
         return mainPanel;

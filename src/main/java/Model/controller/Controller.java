@@ -11,7 +11,6 @@ public class Controller {
     GameControler gameControler = new Game();
     Gui gui;
     public static List<Player> playerList;
-    public static int kolejnoscGraczy = 0;
     Player ktoryGraczMaRuch;
 
     public Controller() {
@@ -27,6 +26,7 @@ public class Controller {
         playerList = gameControler.getPlayers();
 
         if (sprawdzCzyJestDwochUzytkownikow()) {
+
             Random random = new Random();
             boolean whoStart = random.nextBoolean();
 
@@ -38,7 +38,10 @@ public class Controller {
                 System.out.println("zaczyna: " + gameControler.getPlayers().get(1).getName());
             }
 
-            zacznijRozgrywke();
+           // zacznijRozgrywke();
+            oknoLosowania(playerList.get(0));
+            //gui.wyswietlPanelZwyciestwa(playerList.get(0));
+
         }
 
     }
@@ -49,10 +52,15 @@ public class Controller {
 
     }
 
+
     public void zacznijRozgrywke() {
 
         gui.createGamePanel();
 
+    }
+
+    public void closeWindows(){
+        gui.getMainFrame().dispose();
     }
 
     public Ship[] losujStatki(Player player) {
@@ -100,23 +108,24 @@ public class Controller {
 
         aktualizujStatusPol(player);
 
+        if (gameControler.checkIfWin(player)){
+
+            gui.wyswietlPanelZwyciestwa(player);
+
+        }
+
         for (Player p : playerList) {
             if (p.isNextMove()) {
-                System.out.println("P: " + p.getName());
                 p.setNextMove(true);
                 setKtoryGraczMaRuch(p);
+               // gui.usunMgielke(p);
             } else {
                 p.setNextMove(false);
+                //gui.dodajMgielke(p);
             }
         }
-//            if (player.isNextMove()) {
-//                setKtoryGraczMaRuch(playerList.get(1));
-//            } else {
-//                setKtoryGraczMaRuch(playerList.get(0));
-//            }
 
     }
-
 
     public void aktualizujStatusPol(Player player) {
 
@@ -127,11 +136,11 @@ public class Controller {
             for (int j = 0; j < 10; j++) {
                 int tmpStatus = fieldStates[j][i];
 
-                gui.getMainPanel().getBoardPanel(player).getjButtons()[i][j].setStatus(tmpStatus);
+                gui.getMainPanel().getBoardPanelList(player).getjButtons()[i][j].setStatus(tmpStatus);
             }
         }
 
-        gui.getMainPanel().getBoardPanel(player).rysujIkony(10);
+        gui.getMainPanel().getBoardPanelList(player).rysujIkony(10);
 
     }
 

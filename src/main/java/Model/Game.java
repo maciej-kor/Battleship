@@ -75,20 +75,12 @@ public class Game implements GameControler {
                 players.get(1).setNextMove(false);
 
             }
-
-
         }
-
-        //player.setNextMove(getPlayerGameBoardMap().get(player).getGameBoardControler().shot(x, y));
-        //System.out.println("Player: " + player.getName() + "Następny ruch: " + player.isNextMove());
-
-
-
     }
 
     @Override
     public boolean checkIfWin(Player player) {
-        if (getPlayerGameBoardMap().get(player).getGameBoardControler().getShipwreckNumber() == 10)
+        if (getPlayerGameBoardMap().get(player).getGameBoardControler().getShipwreckNumber() == getPlayerGameBoardMap().get(player).getGameBoardControler().getShipList().size())
             return true;
         else
             return false;

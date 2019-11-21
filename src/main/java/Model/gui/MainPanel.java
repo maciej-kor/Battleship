@@ -54,7 +54,7 @@ public class MainPanel extends JPanel {
     }
 
 
-    public BoardPanel getBoardPanel(Player player) {
+    public BoardPanel getBoardPanelList(Player player) {
 
         for (BoardPanel p : boardPanelArray) {
 

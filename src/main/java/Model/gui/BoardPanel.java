@@ -11,20 +11,21 @@ public class BoardPanel extends JPanel {
     FieldButton[][] jButtons;
     Controller controller;
     Player player;
+    JLabel mgla;
 
     public static ImageIcon imageIconWater;
     public static ImageIcon imageIconEntered;
     public static ImageIcon imageIconMissedShot;
     public static ImageIcon imageIconHit;
     public static ImageIcon imageIconWreck;
+    public static ImageIcon imageIconMg;
 
 
     public BoardPanel(Controller controller, Player player) {
 
         this.controller = controller;
         this.player = player;
-        GridLayout gridLayout = new GridLayout(10, 10);
-        this.setLayout(gridLayout);
+        this.setLayout(null);
         addIcons();
         createJButtons(10);
 
@@ -41,6 +42,7 @@ public class BoardPanel extends JPanel {
                 fieldButton.setxX(j);
                 fieldButton.setyY(i);
                 fieldButton.setIcon(imageIconWater);
+                fieldButton.setBounds(fieldButton.getxX()*60, fieldButton.getyY()*60, 60, 60);
                 jButtons[j][i] = fieldButton;
                 this.add(fieldButton);
 
@@ -89,7 +91,24 @@ public class BoardPanel extends JPanel {
         Image imageHit1 = imageIconHit12.getImage();
         imageIconWreck = new ImageIcon(imageHit1.getScaledInstance(60, 60, Image.SCALE_DEFAULT));
 
+        ImageIcon imageIconMg1 = new ImageIcon(getClass().getResource("mg.png"));
+        Image imageMg = imageIconMg1.getImage();
+        imageIconMg = new ImageIcon(imageMg.getScaledInstance(600, 600, Image.SCALE_DEFAULT));
+
     }
+
+//    public void zakryj(){
+//        mgla = new JLabel();
+//        mgla.setVisible(true);
+//        mgla.setOpaque(false);
+//        mgla.setIcon(imageIconMg);
+//        this.add(mgla);
+//    }
+//
+//    public void odkryj(){
+//        mgla.setVisible(false);
+//
+//    }
 
     public FieldButton[][] getjButtons() {
         return jButtons;

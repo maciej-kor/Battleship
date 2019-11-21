@@ -36,10 +36,10 @@ public class GameBoardControlerImpl implements GameBoardController {
 
         shipList = new ArrayList<>();
 
-        randomShipCoordinates(4, 1, gameBoardSize);
-        randomShipCoordinates(3, 2, gameBoardSize);
-        randomShipCoordinates(2, 3, gameBoardSize);
-        randomShipCoordinates(1, 4, gameBoardSize);
+        randomShipCoordinates(1, 1, gameBoardSize);
+        //randomShipCoordinates(3, 2, gameBoardSize);
+//        randomShipCoordinates(2, 3, gameBoardSize);
+//        randomShipCoordinates(1, 4, gameBoardSize);
 
         System.out.println(shipList);
     }
