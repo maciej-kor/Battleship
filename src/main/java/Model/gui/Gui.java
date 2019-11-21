@@ -61,12 +61,6 @@ public class Gui {
 
     }
 
-    public void changePanel(){
-
-
-
-
-    }
 
     public MainPanel getMainPanel() {
         return mainPanel;

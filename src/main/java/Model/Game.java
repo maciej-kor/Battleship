@@ -44,9 +44,46 @@ public class Game implements GameControler {
     @Override
     public void shot(int x, int y, Player player) {
 
-        player.setNextMove( getPlayerGameBoardMap().get(player).getGameBoardControler().shot(x, y));
-        System.out.println("Player: " + player.getName() + "Następny ruch: " + player.isNextMove());
-        
+        boolean czyZostajeRuchPoTejStronie;
+
+        czyZostajeRuchPoTejStronie = getPlayerGameBoardMap().get(player).getGameBoardControler().shot(x, y);
+
+        if (czyZostajeRuchPoTejStronie){
+
+            if (players.get(0).getName().equals(player.getName())){
+
+                players.get(0).setNextMove(true);
+                players.get(1).setNextMove(false);
+
+            } else {
+
+                players.get(0).setNextMove(false);
+                players.get(1).setNextMove(true);
+
+            }
+
+        } else {
+
+            if (players.get(0).getName().equals(player.getName())){
+
+                players.get(0).setNextMove(false);
+                players.get(1).setNextMove(true);
+
+            } else {
+
+                players.get(0).setNextMove(true);
+                players.get(1).setNextMove(false);
+
+            }
+
+
+        }
+
+        //player.setNextMove(getPlayerGameBoardMap().get(player).getGameBoardControler().shot(x, y));
+        //System.out.println("Player: " + player.getName() + "Następny ruch: " + player.isNextMove());
+
+
+
     }
 
     @Override

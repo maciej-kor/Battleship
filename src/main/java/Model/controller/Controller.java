@@ -1,7 +1,6 @@
 package Model.controller;
 
 import Model.*;
-import Model.gui.FieldButton;
 import Model.gui.Gui;
 
 import java.util.List;
@@ -13,6 +12,7 @@ public class Controller {
     Gui gui;
     public static List<Player> playerList;
     public static int kolejnoscGraczy = 0;
+    Player ktoryGraczMaRuch;
 
     public Controller() {
 
@@ -30,17 +30,15 @@ public class Controller {
             Random random = new Random();
             boolean whoStart = random.nextBoolean();
 
-            if (whoStart){
-                gameControler.getPlayers().get(0).setNextMove(true);
-                gameControler.getPlayers().get(1).setNextMove(false);
+            if (whoStart) {
+                ktoryGraczMaRuch = gameControler.getPlayers().get(0);
                 System.out.println("zaczyna: " + gameControler.getPlayers().get(0));
             } else {
-                gameControler.getPlayers().get(1).setNextMove(true);
-                gameControler.getPlayers().get(0).setNextMove(false);
+                ktoryGraczMaRuch = gameControler.getPlayers().get(1);
                 System.out.println("zaczyna: " + gameControler.getPlayers().get(1).getName());
             }
 
-            gui.createGamePanel();
+            zacznijRozgrywke();
         }
 
     }
@@ -88,6 +86,10 @@ public class Controller {
 
     }
 
+    public Player zwrocGraczaKtoregoRuchJest() {
+        return ktoryGraczMaRuch;
+    }
+
     public List<GameBoard> getGameBoardList() {
         return gameControler.getGameBoards();
     }
@@ -98,24 +100,30 @@ public class Controller {
 
         aktualizujStatusPol(player);
 
-        zamglijPole(player);
-
-    }
-
-    public void zamglijPole(Player player) {
-
-        if (kolejnoscGraczy % 2 == 0) {
-            //gui.zamglij(player);
-            kolejnoscGraczy++;
+        for (Player p : playerList) {
+            if (p.isNextMove()) {
+                System.out.println("P: " + p.getName());
+                p.setNextMove(true);
+                setKtoryGraczMaRuch(p);
+            } else {
+                p.setNextMove(false);
+            }
         }
+//            if (player.isNextMove()) {
+//                setKtoryGraczMaRuch(playerList.get(1));
+//            } else {
+//                setKtoryGraczMaRuch(playerList.get(0));
+//            }
 
     }
+
 
     public void aktualizujStatusPol(Player player) {
 
         int[][] fieldStates = gameControler.getFieldsState(player);
 
         for (int i = 0; i < 10; i++) {
+
             for (int j = 0; j < 10; j++) {
                 int tmpStatus = fieldStates[j][i];
 
@@ -124,8 +132,15 @@ public class Controller {
         }
 
         gui.getMainPanel().getBoardPanel(player).rysujIkony(10);
+
     }
 
+    public Player getKtoryGraczMaRuch() {
+        return ktoryGraczMaRuch;
+    }
 
+    public void setKtoryGraczMaRuch(Player ktoryGraczMaRuch) {
+        this.ktoryGraczMaRuch = ktoryGraczMaRuch;
+    }
 }
 

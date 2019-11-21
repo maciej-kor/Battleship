@@ -60,8 +60,12 @@ public class FieldButton extends JButton implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        if (status == 0)
-            controller.shoot(player, getxX(), getyY());
+        System.out.println(controller.zwrocGraczaKtoregoRuchJest().getName());
+
+        if (player.getName().equals(controller.zwrocGraczaKtoregoRuchJest().getName())) {
+            if (status == 0)
+                controller.shoot(player, getxX(), getyY());
+        }
     }
 
 
@@ -78,16 +82,20 @@ public class FieldButton extends JButton implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
 
-        if (status == 0) {
-            this.setIcon(BoardPanel.imageIconEntered);
+        if (player.getName().equals(controller.zwrocGraczaKtoregoRuchJest().getName())) {
+            if (status == 0) {
+                this.setIcon(BoardPanel.imageIconEntered);
+            }
         }
-
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        if (status == 0) {
-            this.setIcon(BoardPanel.imageIconWater);
+        if (player.getName().equals(controller.zwrocGraczaKtoregoRuchJest().getName())) {
+            if (status == 0)
+                this.setIcon(BoardPanel.imageIconWater);
+
         }
     }
 }
+

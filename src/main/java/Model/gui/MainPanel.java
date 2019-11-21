@@ -21,11 +21,6 @@ public class MainPanel extends JPanel {
 
         if (controller.getGameBoardList().size() > 1) {
 
-//            ImageIcon imgm = new ImageIcon("mgla.png");
-//            JLabel m = new JLabel(imgm, JLabel.CENTER);
-//            m.setBounds(0, 0, 1280, 720);
-//            add(m);
-
             Player player1 = playerList.get(0);
             Player player2 = playerList.get(1);
 
@@ -33,11 +28,13 @@ public class MainPanel extends JPanel {
             BoardPanel boardPanel1 = new BoardPanel(controller, player1);
             boardPanel1.setSize(boardPanel1.getPreferredSize());
             boardPanel1.setBounds(20, 100, boardPanel1.getPreferredSize().width, boardPanel1.getPreferredSize().height);
-            this.add(boardPanel1);
+
 
             BoardPanel boardPanel2 = new BoardPanel(controller, player2);
             boardPanel2.setSize(boardPanel2.getPreferredSize());
             boardPanel2.setBounds(660, 100, boardPanel2.getPreferredSize().width, boardPanel2.getPreferredSize().height);
+
+            this.add(boardPanel1);
             this.add(boardPanel2);
 
             boardPanelArray[0] = boardPanel1;
