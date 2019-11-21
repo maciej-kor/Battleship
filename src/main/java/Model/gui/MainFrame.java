@@ -5,9 +5,6 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
 
-    public static StartingPanel startingPanel;
-    public static MainPanel mainPanel;
-
     public MainFrame() {
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

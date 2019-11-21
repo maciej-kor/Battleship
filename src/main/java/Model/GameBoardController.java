@@ -16,6 +16,8 @@ public interface GameBoardController {
 
     int getFieldStatus(int x, int y, Player player);
 
+    List<Ship> getShipList();
+
 
 
 }

@@ -86,8 +86,7 @@ public class StartingPanel extends JPanel {
         if (player1Name.getText().equals("") || player2Name.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "I said input your name soldier! Listen to your commander or leave this ship!");
         } else {
-            controller.addUser(player1Name.getText());
-            controller.addUser(player2Name.getText());
+            controller.addUser(player1Name.getText(), player2Name.getText());
         }
     }
 

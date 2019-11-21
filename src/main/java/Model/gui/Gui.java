@@ -1,5 +1,6 @@
 package Model.gui;
 
+import Model.Player;
 import Model.controller.Controller;
 
 public class Gui {
@@ -8,6 +9,7 @@ public class Gui {
     MainFrame mainFrame;
     Controller controller;
     MainPanel mainPanel;
+    RandomShipsPanel randomShipsPanel;
 
     public Gui(Controller controller) {
 
@@ -31,18 +33,38 @@ public class Gui {
         mainFrame.add(startingPanel);
         mainFrame.pack();
         mainFrame.setWindowInCenter();
+
+
+    }
+
+    public void createRandomPanel(Player player){
+
+        mainFrame.setVisible(false);
+        MainFrame mainFrame = new MainFrame();
+        randomShipsPanel = new RandomShipsPanel(controller, player);
+        mainFrame.add(randomShipsPanel);
+        mainFrame.pack();
+        mainFrame.setWindowInCenter();
+
+
     }
 
     public void createGamePanel(){
+
         mainFrame.setVisible(false);
         MainFrame mainFrame = new MainFrame();
-
         mainPanel = new MainPanel(controller);
-
         mainFrame.add(mainPanel);
         mainFrame.pack();
         mainFrame.setWindowInCenter();
         mainPanel.setVisible(true);
+
+    }
+
+    public void changePanel(){
+
+
+
 
     }
 
@@ -52,5 +74,13 @@ public class Gui {
 
     public void setMainPanel(MainPanel mainPanel) {
         this.mainPanel = mainPanel;
+    }
+
+    public RandomShipsPanel getRandomShipsPanel() {
+        return randomShipsPanel;
+    }
+
+    public void setRandomShipsPanel(RandomShipsPanel randomShipsPanel) {
+        this.randomShipsPanel = randomShipsPanel;
     }
 }

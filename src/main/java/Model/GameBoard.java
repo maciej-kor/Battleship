@@ -11,10 +11,6 @@ public class GameBoard {
         gameBoardControler.randomShipsCoordinates(gameBoardSize);
     }
 
-    public void randomShipCoordinates(){
-        gameBoardControler.randomShipsCoordinates(gameBoardSize);
-    }
-
     public GameBoardController getGameBoardControler() {
         return gameBoardControler;
     }

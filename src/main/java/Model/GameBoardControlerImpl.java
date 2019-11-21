@@ -48,19 +48,18 @@ public class GameBoardControlerImpl implements GameBoardController {
     public void shot(int x, int y) {
 
         boolean hit = false;
-        boolean sunk = false;
 
         for (Ship ship : shipList) {
-            for (int i = 0; i < ship.getLength(); i++) {
 
-                if (ship.getCoordinates()[i][0] == x && ship.getCoordinates()[i][1] == y) {
+            for (int j = 0; j < ship.getLength(); j++) {
 
+                int[][] cord = ship.getCoordinates();
+
+                int yShip = cord[j][0];
+                int xShip = cord[j][1];
+
+                if (yShip == y && xShip == x) {
                     ship.setHitsNumber(ship.getHitsNumber() + 1);
-
-                    if (ship.getHitsNumber() == ship.getLength()) {
-                        ship.setSunken(true);
-                        sunk = true;
-                    }
 
                     for (Field field : fields) {
 
@@ -70,36 +69,45 @@ public class GameBoardControlerImpl implements GameBoardController {
                             hit = true;
 
                         }
-                    }
-                }
-            }
 
-            if (sunk) {
-                for (int i = 0; i < ship.getLength(); i++) {
-                    for (Field field : fields) {
-                        if (field.getXx() == ship.getCoordinates()[i][0] && field.getYy() == ship.getCoordinates()[i][1] && field.getFieldState().equals(FieldState.HIT)) {
-                            field.setFieldState(FieldState.WRECK);
-                            //System.out.println(field.getYy());
-                           // System.out.println(field.getXx());
+                        if (ship.getHitsNumber() == ship.getLength()) {
+                            ship.setSunken(true);
+                            zatopiony(ship);
+
                         }
-                    }
-                }
 
-            }
-
-            if (!hit) {
-
-                for (Field field : fields) {
-
-                    if (field.getXx() == x && field.getYy() == y) {
-                        field.setFieldState(FieldState.MISSED_SHOT);
-                        //System.out.println("x" + field.getXx() + "y: " + field.getYy());
                     }
 
                 }
             }
         }
 
+        if (!hit) {
+
+            for (Field field : fields) {
+
+                if (field.getXx() == x && field.getYy() == y)
+                    field.setFieldState(FieldState.MISSED_SHOT);
+
+
+            }
+        }
+    }
+
+
+    public void zatopiony(Ship ship) {
+
+        for (int i = 0; i < ship.getLength(); i++) {
+
+            for (Field field : fields) {
+
+                if (field.getYy() == ship.getCoordinates()[i][0] && field.getXx() == ship.getCoordinates()[i][1])
+                    field.setFieldState(FieldState.WRECK);
+
+            }
+
+
+        }
     }
 
 
@@ -148,6 +156,7 @@ public class GameBoardControlerImpl implements GameBoardController {
 
         }
 
+
     }
 
     public int getFieldStatus(int x, int y, Player player) {
@@ -157,7 +166,6 @@ public class GameBoardControlerImpl implements GameBoardController {
         final int HIT = 1;
         final int WRECK = 2;
 
-        List<Field> fields = getFields();
 
         for (Field f : fields) {
             if (x == f.getXx() && y == f.getYy()) {
@@ -169,7 +177,9 @@ public class GameBoardControlerImpl implements GameBoardController {
                 } else if (f.getFieldState().equals(FieldState.MISSED_SHOT)) {
                     return MISSED_SHOT;
                 } else if (f.getFieldState().equals(FieldState.WRECK)) {
+                    System.out.println("x: " + x + " y: " + y);
                     return WRECK;
+
                 }
             }
         }

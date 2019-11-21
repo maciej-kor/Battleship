@@ -6,6 +6,8 @@ import Model.controller.Controller;
 import javax.swing.*;
 import java.awt.*;
 
+import static Model.controller.Controller.playerList;
+
 public class MainPanel extends JPanel {
 
     Controller controller;
@@ -19,8 +21,13 @@ public class MainPanel extends JPanel {
 
         if (controller.getGameBoardList().size() > 1) {
 
-            Player player1 = controller.getGameBoardList().get(0).getPlayer();
-            Player player2 = controller.getGameBoardList().get(1).getPlayer();
+//            ImageIcon imgm = new ImageIcon("mgla.png");
+//            JLabel m = new JLabel(imgm, JLabel.CENTER);
+//            m.setBounds(0, 0, 1280, 720);
+//            add(m);
+
+            Player player1 = playerList.get(0);
+            Player player2 = playerList.get(1);
 
             setLayout(null);
             BoardPanel boardPanel1 = new BoardPanel(controller, player1);

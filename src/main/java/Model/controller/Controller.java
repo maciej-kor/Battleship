@@ -1,7 +1,6 @@
 package Model.controller;
 
 import Model.*;
-import Model.gui.BoardPanel;
 import Model.gui.FieldButton;
 import Model.gui.Gui;
 
@@ -11,19 +10,51 @@ public class Controller {
 
     GameControler gameControler = new Game();
     Gui gui;
+    public static List<Player> playerList;
+    public static int kolejnoscGraczy = 0;
 
     public Controller() {
 
         gui = new Gui(this);
+    }
+
+    public void addUser(String name1, String name2) {
+
+        gameControler.addPlayer(name1);
+        gameControler.addPlayer(name2);
+
+        playerList = gameControler.getPlayers();
+
+        if (sprawdzCzyJestDwochUzytkownikow()) {
+            oknoLosowania(playerList.get(0));
+        }
 
     }
 
-    public void addUser(String name) {
-        gameControler.addPlayer(name);
+    public void oknoLosowania(Player player) {
 
-        if (sprawdzCzyJestDwochUzytkownikow()) {
-            gui.createGamePanel();
+        gui.createRandomPanel(player);
+
+    }
+
+    public void zacznijRozgrywke() {
+
+        gui.createGamePanel();
+
+    }
+
+    public Ship[] losujStatki(Player player) {
+
+        List<Ship> shipList = gameControler.losuj(player);
+
+        Ship[] shipArray = new Ship[shipList.size()];
+
+        for (int i = 0; i < shipList.size(); i++) {
+            shipArray[i] = shipList.get(i);
         }
+
+        return shipArray;
+
     }
 
     public boolean sprawdzCzyJestDwochUzytkownikow() {
@@ -51,35 +82,36 @@ public class Controller {
 
         gameControler.shot(x, y, player);
 
-        aktualizujStatusPola(player, x, y);
+        aktualizujStatusPol(player);
+
+        zamglijPole(player);
 
     }
 
-    public void aktualizujStatusPola(Player player, int x, int y) {
+    public void zamglijPole(Player player) {
 
-        FieldButton[][] fieldButtonArray = gui.getMainPanel().getBoardPanel(player).getjButtons();
+        if (kolejnoscGraczy % 2 == 0) {
+            //gui.zamglij(player);
+            kolejnoscGraczy++;
+        }
 
-        int status = gameControler.getGameBoard(player).getGameBoardControler().getFieldStatus(x, y, player);
+    }
 
-        gui.getMainPanel().getBoardPanel(player).getjButtons()[x][y].setStatus(status);
+    public void aktualizujStatusPol(Player player) {
 
-        System.out.println((gui.getMainPanel().getBoardPanel(player).getPlayer().getName()));
+        int[][] fieldStates = gameControler.getFieldsState(player);
 
-        int tmpStatus;
-        if (status == 2) {
-            for (int i = 0; i < fieldButtonArray.length; i++) {
-                for (int j = 0; j < fieldButtonArray.length; j++) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                int tmpStatus = fieldStates[j][i];
 
-                    tmpStatus = gameControler.getGameBoard(player).getGameBoardControler().getFieldStatus(i, j, player);
-
-                    if (tmpStatus == 2)
-                        gui.getMainPanel().getBoardPanel(player).getjButtons()[i][j].setStatus(tmpStatus);
-
-                }
+                gui.getMainPanel().getBoardPanel(player).getjButtons()[i][j].setStatus(tmpStatus);
             }
         }
-        gui.getMainPanel().getBoardPanel(player).rysujIkony(10);
 
+        gui.getMainPanel().getBoardPanel(player).rysujIkony(10);
     }
+
+
 }
 

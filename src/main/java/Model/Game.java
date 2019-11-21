@@ -16,6 +16,7 @@ public class Game implements GameControler {
     public void addPlayer(String name) {
 
         boolean nameExists = false;
+
         if (players.size() > 0) {
             for (Player player : players) {
 
@@ -45,6 +46,7 @@ public class Game implements GameControler {
 
         getPlayerGameBoardMap().get(player).getGameBoardControler().shot(x, y);
 
+
     }
 
     @Override
@@ -67,6 +69,28 @@ public class Game implements GameControler {
     @Override
     public List<Player> getPlayers() {
         return players;
+    }
+
+    @Override
+    public List<Ship> losuj(Player player) {
+
+        GameBoard gameBoard = getPlayerGameBoardMap().get(player);
+        gameBoard.getGameBoardControler().randomShipsCoordinates(10);
+        return gameBoard.getGameBoardControler().getShipList();
+
+    }
+
+    @Override
+    public int[][] getFieldsState(Player player) {
+
+        int[][] fieldStates = new int[10][10];
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                fieldStates[i][j] =  playerGameBoardMap.get(player).getGameBoardControler().getFieldStatus(j, i, player);
+            }
+        }
+        return fieldStates;
     }
 
     public Map<Player, GameBoard> getPlayerGameBoardMap() {

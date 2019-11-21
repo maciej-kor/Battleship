@@ -1,7 +1,6 @@
 package Model;
 
 import java.util.List;
-import java.util.Map;
 
 public interface GameControler {
 
@@ -16,4 +15,11 @@ public interface GameControler {
     List<GameBoard> getGameBoards();
 
     List<Player> getPlayers();
+
+    List <Ship> losuj(Player player);
+
+    int[][] getFieldsState(Player player);
+
+
+
 }

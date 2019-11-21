@@ -60,11 +60,8 @@ public class FieldButton extends JButton implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
 
-        System.out.println(player.getName());
-
         if (status == 0)
             controller.shoot(player, getxX(), getyY());
-
     }
 
 
