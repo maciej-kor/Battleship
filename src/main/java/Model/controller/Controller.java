@@ -32,17 +32,27 @@ public class Controller {
 
             if (whoStart) {
                 ktoryGraczMaRuch = gameControler.getPlayers().get(0);
-                System.out.println("zaczyna: " + gameControler.getPlayers().get(0));
             } else {
                 ktoryGraczMaRuch = gameControler.getPlayers().get(1);
-                System.out.println("zaczyna: " + gameControler.getPlayers().get(1).getName());
             }
 
-           // zacznijRozgrywke();
-            oknoLosowania(playerList.get(0));
-            //gui.wyswietlPanelZwyciestwa(playerList.get(0));
+            legendPanel();
 
         }
+
+    }
+
+    public void legendPanel(){
+
+        gui.createLegendPanel();
+
+    }
+
+    public void oknoLosowania() {
+
+        Player player = playerList.get(0);
+
+        gui.createRandomPanel(player);
 
     }
 

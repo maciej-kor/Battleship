@@ -3,8 +3,6 @@ package Model.gui;
 import Model.Player;
 import Model.controller.Controller;
 
-import javax.swing.*;
-
 public class Gui {
 
     StartingPanel startingPanel;
@@ -16,12 +14,12 @@ public class Gui {
     public Gui(Controller controller) {
 
         this.controller = controller;
-        String filePath = "theme.wav";
-        MusicClass musicObject = new MusicClass();
-        musicObject.playMusic(filePath);
+//        String filePath = "theme.wav";
+//        MusicClass musicObject = new MusicClass();
+//        musicObject.playMusic(filePath);
 
         addFrame();
-        addStartPanel();
+        createStartPanel();
 
     }
 
@@ -29,13 +27,25 @@ public class Gui {
         mainFrame = new MainFrame();
     }
 
-    public void addStartPanel() {
+    public void createStartPanel() {
+
         startingPanel = new StartingPanel(controller);
         startingPanel.setVisible(true);
         mainFrame.add(startingPanel);
         mainFrame.pack();
         mainFrame.setWindowInCenter();
 
+    }
+
+    public void createLegendPanel(){
+
+        mainFrame.setVisible(false);
+        mainFrame = new MainFrame();
+        LegendPanel legendPanel = new LegendPanel(controller);
+        legendPanel.setVisible(true);
+        mainFrame.add(legendPanel);
+        mainFrame.pack();
+        mainFrame.setWindowInCenter();
 
     }
 
@@ -59,7 +69,6 @@ public class Gui {
         mainFrame.add(mainPanel);
         mainFrame.pack();
         mainFrame.setWindowInCenter();
-        mainPanel.setVisible(true);
 
     }
 
@@ -74,6 +83,8 @@ public class Gui {
         mainFrame.setWindowInCenter();
 
     }
+
+
 
 //    public void dodajMgielke(Player player) {
 //

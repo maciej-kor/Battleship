@@ -34,34 +34,10 @@ public class StartingPanel extends JPanel {
 
         fontTextField = new Font("ARIAL", Font.BOLD, 12);
 
-        //setting JLabels
-//        createJLabels();
-//        add(player1);
-//        add(player2);
-//        add(inputNames);
-
-        //Tło trzeba dodawać na końcu, bo inaczej się gryzie z elementami
         add(background);
 
     }
 
-    public void createJLabels() {
-
-//        player1 = new JLabel();
-//        player1.setText("Player 1: ");
-//        player1.setFont(new Font("Arial", Font.BOLD, 15));
-//        player1.setBounds(600, 125, 100, 30);
-//
-//        player2 = new JLabel();
-//        player2.setText("Player 2: ");
-//        player2.setFont(new Font("Arial", Font.BOLD, 15));
-//        player2.setBounds(600, 200, 100, 30);
-//
-//        inputNames = new JLabel();
-//        inputNames.setText("Input your names soldiers!");
-//        inputNames.setFont(new Font("Arial", Font.BOLD, 50));
-//        inputNames.setBounds(400, 50, 800, 80);
-    }
 
     public void createJButtons() {
 
