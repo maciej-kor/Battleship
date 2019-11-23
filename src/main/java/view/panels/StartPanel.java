@@ -3,6 +3,7 @@ package view.panels;
 import controller.Controller;
 import view.buttons.ExitButton;
 import view.buttons.NextButton;
+import view.buttons.StartButton;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.*;
 public class StartPanel extends JPanel {
 
     private JTextField player1Name, player2Name;
-    private NextButton nextButton;
+    private StartButton startButton;
     private ExitButton exitButton;
     private Controller controller;
     private Font fontTextField;
@@ -26,7 +27,7 @@ public class StartPanel extends JPanel {
 
         //setting nextButtonAction
         createJButtons();
-        add(nextButton);
+        add(startButton);
         add(exitButton);
 
         //setting JTextFields
@@ -40,12 +41,12 @@ public class StartPanel extends JPanel {
 
     public void createJButtons() {
 
-        nextButton = new NextButton();
-        nextButton.setBounds(780, 530, 180, 65);
-        nextButton.addActionListener(e -> addUsers());
+        startButton = new StartButton();
+        startButton.setBounds(780, 530, 180, 64);
+        startButton.addActionListener(e -> checkNickNamesCorrectness());
 
         exitButton = new ExitButton();
-        exitButton.setBounds(320, 530, 180, 65);
+        exitButton.setBounds(320, 530, 180, 64);
         exitButton.addActionListener(e -> exit());
 
     }
@@ -68,13 +69,22 @@ public class StartPanel extends JPanel {
 
     private void addUsers() {
 
+        controller.addUsers(player1Name.getText(), player2Name.getText());
+
+    }
+
+    public void checkNickNamesCorrectness() {
+
         if (player1Name.getText().equals("") || player2Name.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "I said input your name soldier! Listen to your commander or leave this ship!");
         } else if (player1Name.getText().equals(player2Name.getText())) {
             JOptionPane.showMessageDialog(this, "You are not allowed to have the same names!");
+            player1Name.setText("");
+            player2Name.setText("");
         } else {
-            controller.addUsers(player1Name.getText(), player2Name.getText());
+            addUsers();
         }
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package view.panels;
 
 import controller.Controller;
+import view.buttons.ExitButton;
 import view.buttons.NextButton;
 
 import javax.swing.*;
@@ -29,9 +30,14 @@ public class LegendPanel extends JPanel{
         this.controller = controller;
         this.setLayout(null);
         addIcons();
+
+        ExitButton exitButton = new ExitButton();
+        exitButton.setBounds(100, 550, 180, 64);
+        exitButton.addActionListener(e -> controller.closeApplication());
+        this.add(exitButton);
         nextButton = new NextButton();
         nextButton.addActionListener(e -> controller.displayLoginWindow());
-        nextButton.setBounds(1050,550, 180, 65);
+        nextButton.setBounds(1050,550, 180, 64);
         nextButton.setOpaque(false);
         this.add(nextButton);
 
@@ -56,7 +62,7 @@ public class LegendPanel extends JPanel{
         missedShotButton.setBounds(65, 200, 60, 60);
 
         missedShotButtonLegend = new JLabel();
-        missedShotButtonLegend.setText("- This field means you missed a changeStateOfSelectedField");
+        missedShotButtonLegend.setText("- This field means you missed a change");
         missedShotButtonLegend.setFont(new Font("Arial", Font.BOLD, 25));
         missedShotButtonLegend.setBounds(150, 200, 500, 50);
 

@@ -3,34 +3,26 @@ package view;
 import model.Player;
 import controller.Controller;
 import view.panels.*;
-import view.music.*;
 
 public class Gui {
 
-    StartPanel startPanel;
-    MainFrame mainFrame;
-    Controller controller;
-    MainPanel mainPanel;
-    RandomShipsPanel randomShipsPanel;
+    private StartPanel startPanel;
+    private MainFrame mainFrame;
+    private Controller controller;
+    private MainPanel mainPanel;
+    private RandomShipsPanel randomShipsPanel;
 
     public Gui(Controller controller) {
 
         this.controller = controller;
 
-        MusicClass musicObject = new MusicClass();
-        musicObject.playMusic();
-
-        addFrame();
         createStartPanel();
 
     }
 
-    public void addFrame() {
-        mainFrame = new MainFrame();
-    }
-
     public void createStartPanel() {
 
+        mainFrame = new MainFrame(controller);
         startPanel = new StartPanel(controller);
         startPanel.setVisible(true);
         mainFrame.add(startPanel);
@@ -42,7 +34,7 @@ public class Gui {
     public void createLegendPanel(){
 
         mainFrame.setVisible(false);
-        mainFrame = new MainFrame();
+        mainFrame = new MainFrame(controller);
         LegendPanel legendPanel = new LegendPanel(controller);
         legendPanel.setVisible(true);
         mainFrame.add(legendPanel);
@@ -54,7 +46,7 @@ public class Gui {
     public void createRandomPanel(Player player) {
 
         mainFrame.setVisible(false);
-        mainFrame = new MainFrame();
+        mainFrame = new MainFrame(controller);
         mainFrame.setVisible(true);
         randomShipsPanel = new RandomShipsPanel(controller, player);
         mainFrame.add(randomShipsPanel);
@@ -66,7 +58,7 @@ public class Gui {
     public void createGamePanel() {
 
         mainFrame.setVisible(false);
-        mainFrame = new MainFrame();
+        mainFrame = new MainFrame(controller);
         mainPanel = new MainPanel(controller);
         mainFrame.add(mainPanel);
         mainFrame.pack();
@@ -77,7 +69,7 @@ public class Gui {
     public void createWinnerPanel(Player player) {
 
         mainFrame.setVisible(false);
-        mainFrame = new MainFrame();
+        mainFrame = new MainFrame(controller);
         WinnerPanel winnerPanel = new WinnerPanel(player);
         winnerPanel.setVisible(true);
         mainFrame.add(winnerPanel);

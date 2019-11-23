@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import view.Gui;
+import view.music.MusicClass;
 
 import java.util.List;
 import java.util.Random;
@@ -13,8 +14,12 @@ public class Controller {
     private GameInterface gameInterface = new Game();
     private Gui gui;
     private Player myMove;
+    private MusicClass musicObject;
 
     public Controller() {
+
+        musicObject = new MusicClass();
+        musicObject.playMusic();
 
         gui = new Gui(this);
 
@@ -72,6 +77,7 @@ public class Controller {
 
     public void closeApplication() {
         gui.getMainFrame().dispose();
+        System.exit(0);
     }
 
     public Ship[] randomShips(Player player) {
@@ -158,6 +164,14 @@ public class Controller {
 
     public void setMyMove(Player myMove) {
         this.myMove = myMove;
+    }
+
+    public MusicClass getMusicObject() {
+        return musicObject;
+    }
+
+    public void setMusicObject(MusicClass musicObject) {
+        this.musicObject = musicObject;
     }
 }
 

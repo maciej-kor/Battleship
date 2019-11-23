@@ -4,22 +4,24 @@ import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class NextButton extends JButton implements MouseListener {
+public class StartButton extends JButton implements MouseListener {
 
-    private static ImageIcon nextButtonImg;
-    private static ImageIcon nextButtonEnteredImg;
+    static ImageIcon startButtonImg;
+    static ImageIcon startButtonEnteredImg;
 
-    public NextButton() {
 
-        nextButtonEnteredImg = new ImageIcon(getClass().getResource("nextButtonEntered.png"));
+    public StartButton() {
+
+        startButtonEnteredImg = new ImageIcon(getClass().getResource("startButtonEntered.png"));
 
         this.setContentAreaFilled(false);
         this.setOpaque(false);
-        nextButtonImg = new ImageIcon(getClass().getResource("nextButton.png"));
-        this.setIcon(nextButtonImg);
+        startButtonImg = new ImageIcon(getClass().getResource("startButton.png"));
+        this.setIcon(startButtonImg);
         this.setBorder(null);
 
         addMouseListener(this);
+
     }
 
     @Override
@@ -39,11 +41,11 @@ public class NextButton extends JButton implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        this.setIcon(nextButtonEnteredImg);
+        this.setIcon(startButtonEnteredImg);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        this.setIcon(nextButtonImg);
+        this.setIcon(startButtonImg);
     }
 }
