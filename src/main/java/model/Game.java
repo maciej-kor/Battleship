@@ -78,13 +78,17 @@ public class Game implements GameInterface {
     }
 
     @Override
-    public boolean checkIfWin(Player player) {
+    public Player checkWinner() {
 
-        // compare number of ships and number of wrecks
-        if (getPlayerGameBoardMap().get(player).getGameBoardControler().getShipwreckNumber() == getPlayerGameBoardMap().get(player).getGameBoardControler().getShipList().size())
-            return true;
-        else
-            return false;
+        for (Player p : players) {
+
+            // compare number of ships and number of wrecks
+            if (getPlayerGameBoardMap().get(p).getGameBoardControler().getShipwreckNumber() == getPlayerGameBoardMap().get(p).getGameBoardControler().getShipList().size())
+                return p;
+
+        }
+
+        return null;
     }
 
     public List<GameBoard> getGameBoards() {

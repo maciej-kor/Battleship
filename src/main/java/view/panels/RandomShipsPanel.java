@@ -19,7 +19,8 @@ public class RandomShipsPanel extends JPanel {
     private RandomShipsBoardPanel boardPanel;
     private Player player;
     private Ship[] shipArray;
-    static int numerGraczaLosujacego = 0;
+    private static int numerGraczaLosujacego = 0;
+    private boolean randomButtonFlag = false;
 
     public RandomShipsPanel(Controller controller, Player player) {
 
@@ -74,16 +75,21 @@ public class RandomShipsPanel extends JPanel {
 
         this.shipArray = controller.randomShips(player);
         boardPanel.aktualizujStanPol(shipArray);
+        randomButtonFlag = true;
 
     }
 
     private void nextButton() {
 
-        numerGraczaLosujacego++;
-        if (numerGraczaLosujacego < 2)
-            controller.displayLoginWindow(playerList.get(numerGraczaLosujacego));
-        else
-            controller.displayGameWindow();
+        if (!randomButtonFlag) {
+            JOptionPane.showMessageDialog(this, "You must random your ships firstly");
+        } else {
+            numerGraczaLosujacego++;
+            if (numerGraczaLosujacego < 2)
+                controller.displayLoginWindow(playerList.get(numerGraczaLosujacego));
+            else
+                controller.displayGameWindow();
+        }
     }
 
 

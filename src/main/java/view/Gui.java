@@ -9,7 +9,7 @@ public class Gui {
     private StartPanel startPanel;
     private MainFrame mainFrame;
     private Controller controller;
-    private MainPanel mainPanel;
+    private GamePanel gamePanel;
     private RandomShipsPanel randomShipsPanel;
 
     public Gui(Controller controller) {
@@ -59,8 +59,8 @@ public class Gui {
 
         mainFrame.setVisible(false);
         mainFrame = new MainFrame(controller);
-        mainPanel = new MainPanel(controller);
-        mainFrame.add(mainPanel);
+        gamePanel = new GamePanel(controller);
+        mainFrame.add(gamePanel);
         mainFrame.pack();
         mainFrame.setWindowInCenter();
 
@@ -83,9 +83,9 @@ public class Gui {
         for (Player p : controller.playerList){
 
             if (!player.getName().equals(p.getName()))
-                mainPanel.getBoardPanelList(p).setFogImageVisible();
+                gamePanel.getBoardPanelList(p).setFogImageVisible();
              else
-                mainPanel.getBoardPanelList(p).setFogImageInvisible();
+                gamePanel.getBoardPanelList(p).setFogImageInvisible();
 
         }
 
@@ -95,8 +95,8 @@ public class Gui {
         return mainFrame;
     }
 
-    public MainPanel getMainPanel() {
-        return mainPanel;
+    public GamePanel getGamePanel() {
+        return gamePanel;
     }
 
 

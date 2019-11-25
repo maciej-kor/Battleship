@@ -129,9 +129,9 @@ public class Controller {
 
         updateFieldsStatus(player);
 
-        if (gameInterface.checkIfWin(player)) {
+        if (gameInterface.checkWinner() != null) {
 
-            gui.createWinnerPanel(player);
+            gui.createWinnerPanel(gameInterface.checkWinner());
 
         }
 
@@ -153,11 +153,11 @@ public class Controller {
 
             for (int j = 0; j < 10; j++) {
                 int tmpStatus = fieldStates[j][i];
-                gui.getMainPanel().getBoardPanelList(player).getjButtons()[i][j].setStatus(tmpStatus);
+                gui.getGamePanel().getBoardPanelList(player).getjButtons()[i][j].setStatus(tmpStatus);
             }
         }
 
-        gui.getMainPanel().getBoardPanelList(player).refreshIcons(10);
+        gui.getGamePanel().getBoardPanelList(player).refreshIcons(10);
 
     }
 

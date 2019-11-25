@@ -2,7 +2,6 @@ package view.panels;
 
 import controller.Controller;
 import view.buttons.ExitButton;
-import view.buttons.NextButton;
 import view.buttons.StartButton;
 
 import javax.swing.*;

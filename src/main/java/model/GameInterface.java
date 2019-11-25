@@ -8,7 +8,7 @@ public interface GameInterface {
 
     void shot(int x, int y, Player player);
 
-    boolean checkIfWin(Player player);
+    Player checkWinner();
 
     List<GameBoard> getGameBoards();
 

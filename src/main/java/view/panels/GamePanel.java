@@ -8,11 +8,14 @@ import java.awt.*;
 
 import static controller.Controller.playerList;
 
-public class MainPanel extends JPanel {
+public class GamePanel extends JPanel {
 
     private BoardPanel[] boardPanelArray = new BoardPanel[2];
 
-    public MainPanel(Controller controller) {
+    public GamePanel(Controller controller) {
+
+
+        Font font = new Font("ARIAL", Font.PLAIN, 36);
 
         if (controller.getGameBoardList().size() > 1) {
 
@@ -20,10 +23,21 @@ public class MainPanel extends JPanel {
             Player player2 = playerList.get(1);
 
             setLayout(null);
+            JLabel player1Label = new JLabel();
+            player1Label.setText(player1.getName());
+            player1Label.setBounds(20, 50, 300, 40);
+            player1Label.setFont(font);
+            this.add(player1Label);
+
             BoardPanel boardPanel1 = new BoardPanel(controller, player1);
             boardPanel1.setSize(boardPanel1.getPreferredSize());
             boardPanel1.setBounds(20, 100, boardPanel1.getPreferredSize().width, boardPanel1.getPreferredSize().height);
 
+            JLabel player2Label = new JLabel();
+            player2Label.setText(player2.getName());
+            player2Label.setBounds(660, 50, 300, 40);
+            player2Label.setFont(font);
+            this.add(player2Label);
 
             BoardPanel boardPanel2 = new BoardPanel(controller, player2);
             boardPanel2.setSize(boardPanel2.getPreferredSize());
