@@ -12,7 +12,6 @@ public class WinnerPanel extends JPanel {
 
     private Controller controller;
 
-
     public WinnerPanel(Player player, Controller controller) {
 
         this.controller = controller;

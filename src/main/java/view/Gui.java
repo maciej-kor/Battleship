@@ -10,7 +10,6 @@ public class Gui {
     private MainFrame mainFrame;
     private Controller controller;
     private GamePanel gamePanel;
-    private RandomShipsPanel randomShipsPanel;
 
     public Gui(Controller controller) {
 
@@ -49,7 +48,7 @@ public class Gui {
         mainFrame.setVisible(false);
         mainFrame = new MainFrame(controller);
         mainFrame.setVisible(true);
-        randomShipsPanel = new RandomShipsPanel(controller, player);
+        RandomShipsPanel randomShipsPanel = new RandomShipsPanel(controller, player);
         mainFrame.add(randomShipsPanel);
         mainFrame.pack();
         mainFrame.setWindowInCenter();

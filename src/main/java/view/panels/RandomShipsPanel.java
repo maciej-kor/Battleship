@@ -16,7 +16,7 @@ import static controller.Controller.playerList;
 public class RandomShipsPanel extends JPanel {
 
     private Controller controller;
-    private RandomShipsBoardPanel boardPanel;
+    private RandomShipsBoardPanel randomShipsBoardPanel;
     private Player player;
     private Ship[] shipArray;
     private static int numerGraczaLosujacego = 0;
@@ -28,11 +28,11 @@ public class RandomShipsPanel extends JPanel {
         this.controller = controller;
         this.player = player;
 
-        boardPanel = new RandomShipsBoardPanel(controller, player);
-        boardPanel.setBounds(40, 40, 600, 600);
-        boardPanel.setVisible(true);
+        randomShipsBoardPanel = new RandomShipsBoardPanel(controller, player);
+        randomShipsBoardPanel.setBounds(40, 40, 600, 600);
+        randomShipsBoardPanel.setVisible(true);
         this.setVisible(true);
-        this.add(boardPanel);
+        this.add(randomShipsBoardPanel);
 
         Font fontLabel = new Font("ARIAL", Font.PLAIN, 30);
         JLabel jLabel = new JLabel();
@@ -71,10 +71,10 @@ public class RandomShipsPanel extends JPanel {
         return new Dimension(890, 680);
     }
 
-    public void randomButton() {
+    private void randomButton() {
 
         this.shipArray = controller.randomShips(player);
-        boardPanel.aktualizujStanPol(shipArray);
+        randomShipsBoardPanel.updateFieldStatus(shipArray);
         randomButtonFlag = true;
 
     }
@@ -82,22 +82,24 @@ public class RandomShipsPanel extends JPanel {
     private void nextButton() {
 
         if (!randomButtonFlag) {
-            JOptionPane.showMessageDialog(this, "You must random your ships firstly");
+            JOptionPane.showMessageDialog(this, "You must random your ships");
         } else {
             numerGraczaLosujacego++;
             if (numerGraczaLosujacego < 2)
                 controller.displayLoginWindow(playerList.get(numerGraczaLosujacego));
-            else
-                controller.displayGameWindow();
+            else{
+                numerGraczaLosujacego = 0;
+                controller.displayGameWindow();}
+
         }
     }
 
 
-    public RandomShipsBoardPanel getBoardPanel() {
-        return boardPanel;
+    public RandomShipsBoardPanel getRandomShipsBoardPanel() {
+        return randomShipsBoardPanel;
     }
 
-    public void setBoardPanel(RandomShipsBoardPanel boardPanel) {
-        this.boardPanel = boardPanel;
+    public void setRandomShipsBoardPanel(RandomShipsBoardPanel randomShipsBoardPanel) {
+        this.randomShipsBoardPanel = randomShipsBoardPanel;
     }
 }

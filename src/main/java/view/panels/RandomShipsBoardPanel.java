@@ -55,7 +55,7 @@ public class RandomShipsBoardPanel extends JPanel {
         imageIconShip = new ImageIcon(imageHit.getScaledInstance(60, 60, Image.SCALE_DEFAULT));
     }
 
-    protected void aktualizujStanPol(Ship[] shipArray) {
+    protected void updateFieldStatus(Ship[] shipArray) {
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
