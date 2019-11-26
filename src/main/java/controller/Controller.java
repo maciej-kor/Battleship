@@ -11,7 +11,7 @@ public class Controller {
 
     public static List<Player> playerList;
 
-    private GameInterface gameInterface = new Game();
+    private GameInterface gameInterface = null;
     private Gui gui;
     private Player myMove;
     private MusicClass musicObject;
@@ -20,7 +20,16 @@ public class Controller {
 
         musicObject = new MusicClass();
         musicObject.playMusic();
+        startNewGame();
 
+    }
+
+    public void startNewGame() {
+
+        if (gameInterface != null)
+            gui.getMainFrame().setVisible(false);
+
+        gameInterface = new Game();
         gui = new Gui(this);
 
     }

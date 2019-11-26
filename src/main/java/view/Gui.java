@@ -20,6 +20,7 @@ public class Gui {
 
     }
 
+
     public void createStartPanel() {
 
         mainFrame = new MainFrame(controller);
@@ -31,7 +32,7 @@ public class Gui {
 
     }
 
-    public void createLegendPanel(){
+    public void createLegendPanel() {
 
         mainFrame.setVisible(false);
         mainFrame = new MainFrame(controller);
@@ -70,7 +71,7 @@ public class Gui {
 
         mainFrame.setVisible(false);
         mainFrame = new MainFrame(controller);
-        WinnerPanel winnerPanel = new WinnerPanel(player);
+        WinnerPanel winnerPanel = new WinnerPanel(player, controller);
         winnerPanel.setVisible(true);
         mainFrame.add(winnerPanel);
         mainFrame.pack();
@@ -78,13 +79,13 @@ public class Gui {
 
     }
 
-    public void setFog(Player player){
+    public void setFog(Player player) {
 
-        for (Player p : controller.playerList){
+        for (Player p : controller.playerList) {
 
             if (!player.getName().equals(p.getName()))
                 gamePanel.getBoardPanelList(p).setFogImageVisible();
-             else
+            else
                 gamePanel.getBoardPanelList(p).setFogImageInvisible();
 
         }
