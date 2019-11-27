@@ -7,6 +7,9 @@ import javax.sound.sampled.Clip;
 public class MusicClass {
 
     private Clip clip;
+    private Clip shot;
+    private Clip hit;
+    private Clip miss;
     private long clipTimePosition;
 
     public void playMusic() {
@@ -16,6 +19,39 @@ public class MusicClass {
             clip.open(audioInputStream);
             clip.start();
             clip.loop(Clip.LOOP_CONTINUOUSLY);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void playShotClip(){
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResource("shot.wav"));
+            shot = AudioSystem.getClip();
+            shot.open(audioInputStream);
+            shot.start();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void playHitClip(){
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResource("shotHit.wav"));
+            hit = AudioSystem.getClip();
+            hit.open(audioInputStream);
+            hit.start();
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public void playMissClip(){
+        try{
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResource("shotMiss.wav"));
+            miss = AudioSystem.getClip();
+            miss.open(audioInputStream);
+            miss.start();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

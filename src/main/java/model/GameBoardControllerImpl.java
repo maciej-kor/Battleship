@@ -1,5 +1,7 @@
 package model;
 
+import view.music.MusicClass;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -9,6 +11,7 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
 
     private List<Ship> shipList;
     private List<Field> fields;
+    private MusicClass musicClass = new MusicClass();
 
     @Override
     public void addFields(int gameBoardSize) {
@@ -35,9 +38,9 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
 
         shipList = new ArrayList<>();
 
-        randomShipCoordinates(4, 1, gameBoardSize);
-        randomShipCoordinates(3, 2, gameBoardSize);
-        randomShipCoordinates(2, 3, gameBoardSize);
+        randomShipCoordinates(0, 1, gameBoardSize);
+        randomShipCoordinates(0, 2, gameBoardSize);
+        randomShipCoordinates(0, 3, gameBoardSize);
         randomShipCoordinates(1, 4, gameBoardSize);
 
     }
@@ -64,6 +67,7 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
                         if (field.getXx() == x && field.getYy() == y) {
 
                             field.setFieldState(FieldState.HIT);
+                            musicClass.playHitClip();
                             hit = true;
 
                         }
@@ -80,11 +84,12 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
 
         if (!hit) {
 
+            musicClass.playMissClip();
+
             for (Field field : fields) {
 
                 if (field.getXx() == x && field.getYy() == y)
                     field.setFieldState(FieldState.MISSED_SHOT);
-
 
             }
         }

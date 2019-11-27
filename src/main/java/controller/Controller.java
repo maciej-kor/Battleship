@@ -14,12 +14,11 @@ public class Controller {
     private GameInterface gameInterface = null;
     private Gui gui;
     private Player myMove;
-    private MusicClass musicObject;
+    private MusicClass musicObject = new MusicClass();
 
     public Controller() {
 
-        musicObject = new MusicClass();
-        musicObject.playMusic();
+        //musicObject.playMusic();
         startNewGame();
 
     }

@@ -1,6 +1,7 @@
 package view.buttons;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -11,11 +12,13 @@ public class NextButton extends JButton implements MouseListener {
 
     public NextButton() {
 
-        nextButtonEnteredImg = new ImageIcon(getClass().getResource("nextButtonEntered.png"));
 
         this.setContentAreaFilled(false);
         this.setOpaque(false);
-        nextButtonImg = new ImageIcon(getClass().getResource("nextButton.png"));
+        ImageIcon imageNextButton = new ImageIcon(getClass().getResource("nextButton.png"));
+        Image nextBttn = imageNextButton.getImage();
+        nextButtonImg = new ImageIcon(nextBttn.getScaledInstance(265,64, Image.SCALE_AREA_AVERAGING));
+        nextButtonEnteredImg = new ImageIcon(nextBttn.getScaledInstance(200, 58, Image.SCALE_AREA_AVERAGING));
         this.setIcon(nextButtonImg);
         this.setBorder(null);
 

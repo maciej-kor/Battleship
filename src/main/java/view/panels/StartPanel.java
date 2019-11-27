@@ -34,6 +34,13 @@ public class StartPanel extends JPanel {
         add(player1Name);
         add(player2Name);
 
+        ImageIcon img2 = new ImageIcon(getClass().getResource("baner.png"));
+        Image imageBaner = img2.getImage();
+        ImageIcon baner = new ImageIcon(imageBaner.getScaledInstance(510, 277, Image.SCALE_AREA_AVERAGING));
+        JLabel banerLabel = new JLabel(baner);
+        banerLabel.setBounds(0, -25, 1280,200 );
+        add(banerLabel);
+
         add(background);
 
     }
@@ -41,11 +48,11 @@ public class StartPanel extends JPanel {
     public void createJButtons() {
 
         startButton = new StartButton();
-        startButton.setBounds(780, 530, 180, 64);
+        startButton.setBounds(700, 530, 265, 64);
         startButton.addActionListener(e -> checkNickNamesCorrectness());
 
         exitButton = new ExitButton();
-        exitButton.setBounds(320, 530, 180, 64);
+        exitButton.setBounds(320, 530, 265, 64);
         exitButton.addActionListener(e -> exit());
 
     }

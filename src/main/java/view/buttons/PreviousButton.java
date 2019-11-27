@@ -17,7 +17,7 @@ public class PreviousButton extends JButton {
     public void addIcon(){
         ImageIcon previousButtonImage = new ImageIcon(getClass().getResource("previousButton.png"));
         Image imagePreviousButton = previousButtonImage.getImage();
-        previousButtonImg = new ImageIcon(imagePreviousButton.getScaledInstance(90, 90, Image.SCALE_AREA_AVERAGING));
+        previousButtonImg = new ImageIcon(imagePreviousButton.getScaledInstance(265, 64, Image.SCALE_AREA_AVERAGING));
     }
 
 }

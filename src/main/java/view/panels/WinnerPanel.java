@@ -29,11 +29,11 @@ public class WinnerPanel extends JPanel {
         nameOfTheWinner.setText(player.getName());
 
         NewGameButton newGameButton = new NewGameButton();
-        newGameButton.setBounds(780, 530, 180, 64);
+        newGameButton.setBounds(700, 530, 265, 64);
         add(newGameButton);
 
         ExitButton exitButton = new ExitButton();
-        exitButton.setBounds(320, 530, 180, 64);
+        exitButton.setBounds(320, 530, 265, 64);
         add(exitButton);
 
         newGameButton.addActionListener(e -> controller.startNewGame());
@@ -41,8 +41,21 @@ public class WinnerPanel extends JPanel {
 
         add(text);
         add(nameOfTheWinner);
+
+        ImageIcon img2 = new ImageIcon(getClass().getResource("baner.png"));
+        Image imageBaner = img2.getImage();
+        ImageIcon baner = new ImageIcon(imageBaner.getScaledInstance(510, 277, Image.SCALE_AREA_AVERAGING));
+        JLabel banerLabel = new JLabel(baner);
+        banerLabel.setBounds(0, -25, 1280,200 );
+        add(banerLabel);
+
         add(background);
 
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
     }
 
     @Override

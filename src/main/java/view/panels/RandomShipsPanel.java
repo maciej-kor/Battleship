@@ -36,21 +36,28 @@ public class RandomShipsPanel extends JPanel {
 
         Font fontLabel = new Font("ARIAL", Font.PLAIN, 30);
         JLabel jLabel = new JLabel();
-        jLabel.setBounds(680, 40, 200, 70);
-        jLabel.setText(player.getName());
+        jLabel.setBounds(700, 40, 200, 70);
+        jLabel.setText(player.getName().toUpperCase());
         jLabel.setFont(fontLabel);
         this.add(jLabel);
 
+        ImageIcon img3 = new ImageIcon(getClass().getResource("pasek.png"));
+        Image imagePasek = img3.getImage();
+        ImageIcon pasek = new ImageIcon(imagePasek.getScaledInstance(265, 50, Image.SCALE_AREA_AVERAGING));
+        JLabel pasek1 = new JLabel(pasek);
+        pasek1.setBounds(680,40,265,70);
+        this.add(pasek1);
+
         RandomButton random = new RandomButton();
-        random.setBounds(680, 145, 180, 64);
+        random.setBounds(680, 145, 265, 64);
         this.add(random);
 
         NextButton next = new NextButton();
-        next.setBounds(680, 340, 180, 64);
+        next.setBounds(680, 340, 265, 64);
         this.add(next);
 
         ExitButton exitButton = new ExitButton();
-        exitButton.setBounds(680, 576, 180, 64);
+        exitButton.setBounds(680, 576, 265, 64);
         this.add(exitButton);
 
 
@@ -68,7 +75,7 @@ public class RandomShipsPanel extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(890, 680);
+        return new Dimension(1000, 680);
     }
 
     private void randomButton() {
