@@ -40,7 +40,6 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
         randomShipCoordinates(2, 3, gameBoardSize);
         randomShipCoordinates(1, 4, gameBoardSize);
 
-        System.out.println(shipList);
     }
 
     @Override
