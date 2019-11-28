@@ -41,9 +41,9 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
 
         shipList = new ArrayList<>();
 
-        randomShipCoordinates(0, 1, gameBoardSize);
-        randomShipCoordinates(0, 2, gameBoardSize);
-        randomShipCoordinates(0, 3, gameBoardSize);
+        randomShipCoordinates(4, 1, gameBoardSize);
+        randomShipCoordinates(3, 2, gameBoardSize);
+        randomShipCoordinates(2, 3, gameBoardSize);
         randomShipCoordinates(1, 4, gameBoardSize);
 
     }
