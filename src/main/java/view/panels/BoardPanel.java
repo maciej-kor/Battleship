@@ -22,6 +22,8 @@ public class BoardPanel extends JPanel {
     public static ImageIcon imageIconMg;
 
 
+    //Wywołanie konstruktora powoduje wywołanie metody addIcons()
+    //Konstruktor do funkcjonującej macierzy
     public BoardPanel(Controller controller, Player player) {
 
         this.controller = controller;
@@ -40,6 +42,7 @@ public class BoardPanel extends JPanel {
 
     }
 
+    //Tworzy FieldButtony w stosunku do wielkości planszy i przypisuje im współrzędne w macierzy
     public void createJButtons(int gameBoardSize) {
 
         jButtons = new FieldButton[gameBoardSize][gameBoardSize];
@@ -59,6 +62,7 @@ public class BoardPanel extends JPanel {
         }
     }
 
+    //Metoda przechodzi po całej macierzy i przypisuje FieldButtonom ikony odpowiadające ich statusowi
     public void refreshIcons(int gameBoardSize) {
 
         for (int i = 0; i < gameBoardSize; i++) {
@@ -89,6 +93,7 @@ public class BoardPanel extends JPanel {
     }
 
 
+    //Przypisuje zmiennym ścieżki do plików oraz ustala skalowanie obrazu
     public void addIcons() {
 
         ImageIcon imageIconWater1 = new ImageIcon(getClass().getResource("water.png"));

@@ -25,7 +25,7 @@ public class GamePanel extends JPanel {
             setLayout(null);
             JLabel player1Label = new JLabel();
             player1Label.setText("Player 1: " + player1.getName().toUpperCase());
-            player1Label.setBounds(20, 130, 300, 40);
+            player1Label.setBounds(20, 130, 550, 40);
             player1Label.setFont(font);
             this.add(player1Label);
 
@@ -35,7 +35,7 @@ public class GamePanel extends JPanel {
 
             JLabel player2Label = new JLabel();
             player2Label.setText("Player 2: " + player2.getName().toUpperCase());
-            player2Label.setBounds(660, 130, 300, 40);
+            player2Label.setBounds(660, 130, 550, 40);
             player2Label.setFont(font);
             this.add(player2Label);
 

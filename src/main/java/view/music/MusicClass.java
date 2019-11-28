@@ -4,6 +4,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+//Odtwarzacz muzyczny plików .wav
 public class MusicClass {
 
     private Clip clip;
@@ -19,17 +20,6 @@ public class MusicClass {
             clip.open(audioInputStream);
             clip.start();
             clip.loop(Clip.LOOP_CONTINUOUSLY);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void playShotClip(){
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResource("shot.wav"));
-            shot = AudioSystem.getClip();
-            shot.open(audioInputStream);
-            shot.start();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

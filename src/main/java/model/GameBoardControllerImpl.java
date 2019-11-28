@@ -13,6 +13,8 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
     private List<Field> fields;
     private MusicClass musicClass = new MusicClass();
 
+    //Zapełnia listę pól obiektami Field z przypisanymi współrzędnymi
+    //Ustawia stany wszystkich pól na "EMPTY"
     @Override
     public void addFields(int gameBoardSize) {
 
@@ -33,6 +35,7 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
         }
     }
 
+    //Wywołuje metodę randomShipCoordinates(int shipsNumber, int shipsLength, int gameBoardSize)
     @Override
     public void randomShipsCoordinates(int gameBoardSize) {
 
@@ -45,6 +48,10 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
 
     }
 
+    //Właściwa metoda strzału - iteruje po liście statków porównując koordynaty przypisane do obiektu
+    //z tymi podanymi w parametrze. Sprawdza czy statek został zatopiony oraz zwraca flagę trafienia
+    //potrzebną do ustalenia kolejnego ruchu graczy.
+    //Dodatkowo metoda ustawia nowe statusy obiektów typu Field
     @Override
     public boolean changeStateOfSelectedField(int x, int y) {
 
@@ -112,7 +119,8 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
         }
     }
 
-
+    //Metoda zliczająca zestrzelone statki na podstawie flagi zatopienia
+    //będącej polem obiektu klasy Ship
     @Override
     public int getShipwreckNumber() {
         int shipWreckNumber = 0;
@@ -134,6 +142,7 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
         return fields;
     }
 
+    //Metoda generuje nam losowe koordynaty jednego statku
     private void randomShipCoordinates(int shipsNumber, int shipsLenght, int gameBoardSize) {
 
         for (int i = 0; i < shipsNumber; i++) {
@@ -160,6 +169,7 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
 
     }
 
+    //Metoda zwraca nam status żądanego obiektu klasu Field
     public int getFieldStatus(int x, int y, Player player) {
 
         final int EMPTY_FIELD = 0;
@@ -177,7 +187,6 @@ public class GameBoardControllerImpl implements GameBoardControllerInterface {
                 } else if (f.getFieldState().equals(FieldState.MISSED_SHOT)) {
                     return MISSED_SHOT;
                 } else if (f.getFieldState().equals(FieldState.WRECK)) {
-                    System.out.println("x: " + x + " y: " + y);
                     return WRECK;
 
                 }

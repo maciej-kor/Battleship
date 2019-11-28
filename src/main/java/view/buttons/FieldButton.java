@@ -15,6 +15,8 @@ public class FieldButton extends JButton implements MouseListener {
     private Player player;
     private int status;
 
+    //Wpięty controller pozwala na wykonywanie strzałów w mouseListenerze
+    //Konstruktor do prawdziwego funkcjonującego przycisku
     public FieldButton(Controller controller, Player player) {
 
         this.controller = controller;

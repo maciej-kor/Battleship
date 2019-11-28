@@ -78,6 +78,7 @@ public class Gui {
 
     }
 
+    //Przykrywa półprzeźroczystym obrazem nieaktywny panel
     public void setFog(Player player) {
 
         for (Player p : controller.playerList) {
