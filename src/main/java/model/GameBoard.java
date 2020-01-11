@@ -6,6 +6,8 @@ public class GameBoard {
     private Player player;
     private int gameBoardSize;
 
+    //Wywołuje metody addFields(int gameBoardSize) oraz
+    //randomShipsCoordinates(int gameBoardSize) z klasy GameBoardControlerImpl
     public GameBoard(int gameBoardSize){
         gameBoardControler.addFields(gameBoardSize);
         gameBoardControler.randomShipsCoordinates(gameBoardSize);

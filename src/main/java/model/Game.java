@@ -11,6 +11,7 @@ public class Game implements GameInterface {
     private List<Player> players = new ArrayList<>();
     private List<GameBoard> gameBoards = new ArrayList<>();
 
+    //Metoda tworzy nowy obiekt klasy Player oraz przypisuje mu nowy obiekt klasy GameBoard
     @Override
     public boolean addPlayer(String name) {
 
@@ -40,6 +41,7 @@ public class Game implements GameInterface {
 
     }
 
+    //Ustawia flagę gracza nextMove warunkującą do kogo należy kolejny ruch.
     @Override
     public void shot(int x, int y, Player player) {
 
@@ -77,6 +79,9 @@ public class Game implements GameInterface {
         }
     }
 
+    //Wywołuje metodę zliczającą ilość wraków getShipwreckNumber() z klasy GameBoardControlerImpl
+    //Porównuje liczbę wraków z liczbą statków, jeśli zwróci true to znaczy, że gracz podany w
+    //parametrze przegrał.
     @Override
     public Player checkWinner() {
         boolean isLoser = false;
@@ -91,16 +96,13 @@ public class Game implements GameInterface {
         }
 
 
-        if (isLoser) {
+        if (isLoser){
 
-            for (Player p : players) {
+            for (Player p : players){
 
                 // compare number of ships and number of wrecks
                 if (getPlayerGameBoardMap().get(p).getGameBoardControler().getShipwreckNumber() != getPlayerGameBoardMap().get(p).getGameBoardControler().getShipList().size())
-                    ;
-                {
                     return p;
-                }
 
             }
 

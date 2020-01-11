@@ -14,11 +14,10 @@ public class Controller {
     private GameInterface gameInterface = null;
     private Gui gui;
     private Player myMove;
-    private MusicClass musicObject;
+    private MusicClass musicObject = new MusicClass();
 
     public Controller() {
 
-        musicObject = new MusicClass();
         musicObject.playMusic();
         startNewGame();
 
@@ -34,6 +33,10 @@ public class Controller {
 
     }
 
+    //Dodaje użytkowników wywołując metodę addPlayer z klasy Game
+    //Sprawdza metodą sprawdzCzyJestDwochUzytkownikow
+    //Jeśli dodało dwóch użytkowników to wpierw losuje gracza rozpoczynającego grę
+    //dopiero wtedy wywołuje metodę createGamePanel z klasy Gui.
     public void addUsers(String name1, String name2) {
 
         gameInterface.addPlayer(name1);
@@ -102,7 +105,8 @@ public class Controller {
         return shipArray;
     }
 
-    public boolean twoPlayersExist() {
+    //Wywołuje metody getPlayers z klasy Game
+    private boolean twoPlayersExist() {
 
         if (gameInterface.getPlayers().size() == 0)
             return false;
@@ -128,10 +132,15 @@ public class Controller {
 
     }
 
+    //Zwraca listę planszy do gier
     public List<GameBoard> getGameBoardList() {
         return gameInterface.getGameBoards();
     }
 
+    //Wywołuje metodę shot(int x, int y, Playe player) z klasy Game, która z kolei wywołuje metodę
+    //shot(int x, int y) z klasy GameBoardControlerImpl.
+    //Wywołuje także metodę updateFieldStatus(Player player, int x, int y).
+    //Ustawia ruch graczy
     public void shoot(Player player, int x, int y) {
 
         gameInterface.shot(x, y, player);
@@ -156,16 +165,19 @@ public class Controller {
 
     public void updateFieldsStatus(Player player) {
 
+
         int[][] fieldStates = gameInterface.getFieldsState(player);
 
         for (int i = 0; i < 10; i++) {
 
+            //aktualizacja grafik przycisków całego statku jeśli został zestrzelony
             for (int j = 0; j < 10; j++) {
                 int tmpStatus = fieldStates[j][i];
                 gui.getGamePanel().getBoardPanelList(player).getjButtons()[i][j].setStatus(tmpStatus);
             }
         }
 
+        //Odświeżenie ikon przycisków dotyczących danej planszy
         gui.getGamePanel().getBoardPanelList(player).refreshIcons(10);
 
     }

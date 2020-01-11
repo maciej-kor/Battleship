@@ -1,7 +1,6 @@
 package view.panels;
 
 import controller.Controller;
-import view.music.MusicClass;
 
 import javax.swing.*;
 import java.awt.*;

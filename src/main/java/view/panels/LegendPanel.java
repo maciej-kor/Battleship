@@ -32,12 +32,12 @@ public class LegendPanel extends JPanel{
         addIcons();
 
         ExitButton exitButton = new ExitButton();
-        exitButton.setBounds(100, 550, 180, 64);
+        exitButton.setBounds(100, 550, 265, 64);
         exitButton.addActionListener(e -> controller.closeApplication());
         this.add(exitButton);
         nextButton = new NextButton();
         nextButton.addActionListener(e -> controller.displayLoginWindow());
-        nextButton.setBounds(1050,550, 180, 64);
+        nextButton.setBounds(950,550, 265, 64);
         nextButton.setOpaque(false);
         this.add(nextButton);
 
